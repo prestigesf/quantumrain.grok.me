@@ -4,7 +4,7 @@
 
 A filament of ultracold potassium-41 and rubidium-87 atoms stretches, pinches, and falls apart into a train of smaller droplets. That sequence is the first experimental quantum analog of the Plateau–Rayleigh instability. This repo turns that result into a readable page and a live canvas simulation.
 
-Live: [https://prestigesf.github.io/quantumrain.grok.me/](https://prestigesf.github.io/quantumrain.grok.me/)  
+Live (after Pages is on): [https://prestigesf.github.io/quantumrain.grok.me/](https://prestigesf.github.io/quantumrain.grok.me/)  
 Repo: [https://github.com/prestigesf/quantumrain.grok.me](https://github.com/prestigesf/quantumrain.grok.me)
 
 ---
@@ -15,6 +15,7 @@ Repo: [https://github.com/prestigesf/quantumrain.grok.me](https://github.com/pre
 | --- | --- |
 | `index.html` | Single-page site: hero sim, physics explainer, experiment notes, sources |
 | `CNAME` | Custom domain hint for `quantumrain.grok.me` |
+| `.github/workflows/pages.yml` | Optional static-page workflow |
 | `LICENSE` | MIT |
 | `.gitignore` | Standard ignore rules |
 
@@ -26,13 +27,13 @@ No build step. Open `index.html` or enable GitHub Pages on `main` (`/`).
 
 Classical water jets break into drops because surface tension favors less surface area. Beyond a critical length, a cylinder is unstable; pinches grow and the stream becomes a necklace of droplets. That is the Plateau–Rayleigh instability.
 
-In 2025 a collaboration led by groups at CNR-INO, the University of Florence, and LENS reported the same morphology in a *quantum droplet*: a self-bound mixture of $^{41}$K and $^{87}$Rb held in an optical waveguide near absolute zero. Attractive mean-field interactions try to collapse the cloud; repulsive quantum fluctuations (the Lee–Huang–Yang correction) stabilize it into a liquid-like droplet. When that droplet is stretched past a critical aspect ratio it fragments into smaller droplets — “quantum rain.”
+In March 2025, Cavicchioli, Fort, Ancilotto, Modugno, Minardi, and Burchianti (LENS / CNR-INO / Florence and collaborators) reported the same morphology in a *quantum droplet*: a self-bound $^{41}$K–$^{87}$Rb mixture held in an optical waveguide. They quenched the interspecies interaction from non-interacting to strongly attractive. A single droplet formed in an excited compression–elongation mode, stretched past a critical length, and split into two or more smaller droplets. The fragment count rose as attraction decreased and atom number increased — consistent with capillary instability. Attractive mean-field interactions try to collapse the cloud; repulsive quantum fluctuations (the Lee–Huang–Yang correction) stabilize a liquid-like droplet that can then rain.
 
 Key references:
 
-- Fort, C. et al., *Phys. Rev. Lett.* **134**, 093401 (2025). DOI: [10.1103/PhysRevLett.134.093401](https://doi.org/10.1103/PhysRevLett.134.093401)
-- Background on quantum droplets: Petrov, *Phys. Rev. Lett.* **115**, 155302 (2015); Cabrera et al., *Science* **359**, 301 (2018)
-- Accessible overview: [Grokipedia — Quantum rain](https://grokipedia.com/page/Quantum_rain)
+- L. Cavicchioli, C. Fort, F. Ancilotto, M. Modugno, F. Minardi, and A. Burchianti, *Dynamical Formation of Multiple Quantum Droplets in a Bose-Bose Mixture*, Phys. Rev. Lett. **134**, 093401 (2025). DOI: [10.1103/PhysRevLett.134.093401](https://doi.org/10.1103/PhysRevLett.134.093401)
+- Background on quantum droplets: Petrov, Phys. Rev. Lett. **115**, 155302 (2015); Cabrera et al., Science **359**, 301 (2018)
+- Accessible overviews: [Grokipedia — Quantum rain](https://grokipedia.com/page/Quantum_rain) · [Laser Focus World](https://www.laserfocusworld.com/quantum/article/55294428/researchers-create-quantum-rain)
 
 The canvas on the homepage is a **visual analogy**, not a Gross–Pitaevskii solver. It shows filament → pinch → satellite droplets so the morphology is easy to feel. Slider values change attraction, stretch, and fluctuation “noise,” which map loosely onto interaction strength, waveguide aspect ratio, and LHY-scale jitter.
 
@@ -60,12 +61,12 @@ Or just double-click `index.html`.
 
 ## Project status
 
-First fill of an empty repo. Next useful additions if you want them:
+First fill of an empty repo. Next useful additions:
 
-- A 1D/2D toy Gross–Pitaevskii demo (Python + pybinding or JS + numeric.js)
+- A 1D/2D toy Gross–Pitaevskii demo
 - Slow-motion replay of published absorption images (fair-use stills + citation)
 - A short FAQ for classrooms
-- Topics / description / social preview image
+- Social preview image + repo topics
 
 ---
 
