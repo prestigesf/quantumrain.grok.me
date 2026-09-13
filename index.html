@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quantum Rain — prestigesf</title>
+  <meta name="description" content="Interactive explainer of the 2025 quantum-droplet breakup experiment: a self-bound 41K–87Rb filament that fragments into quantum rain." />
+  <meta name="theme-color" content="#060814" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #060814; --ink: #e8eefc; --muted: #9aa6c4;
+      --line: rgba(160, 190, 255, 0.14); --cyan: #7ce7ff; --violet: #b08cff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { background: var(--bg); color: var(--ink); font-family: Outfit, system-ui, sans-serif; }
+    a { color: var(--cyan); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 28px 22px 80px; }
+    header.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-bottom: 22px; border-bottom: 1px solid var(--line); }
+    .mark { font-family: "IBM Plex Mono", monospace; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+    .mark b { color: var(--cyan); font-weight: 500; }
+    h1 { font-family: "Instrument Serif", Georgia, serif; font-weight: 400; font-size: clamp(42px, 8vw, 84px); line-height: 0.95; letter-spacing: -0.02em; margin: 28px 0 12px; }
+    h1 em { font-style: italic; color: var(--violet); }
+    .lede { max-width: 62ch; color: var(--muted); font-size: 18px; line-height: 1.55; }
+    .stage { position: relative; margin: 32px 0 18px; border: 1px solid var(--line); border-radius: 18px; overflow: hidden; background: radial-gradient(900px 280px at 20% -10%, rgba(124,231,255,0.08), transparent 55%), radial-gradient(700px 240px at 90% 110%, rgba(176,140,255,0.1), transparent 50%), #070a16; }
+    canvas { display: block; width: 100%; height: min(62vh, 560px); }
+    .hud { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; padding: 14px; border-top: 1px solid var(--line); background: rgba(6,8,20,0.72); backdrop-filter: blur(8px); }
+    .hud label { display: flex; flex-direction: column; gap: 6px; font-family: "IBM Plex Mono", monospace; font-size: 11px; color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; }
+    input[type=range] { width: 100%; accent-color: var(--cyan); }
+    .actions { display: flex; gap: 8px; align-items: end; }
+    button { font-family: Outfit, sans-serif; font-size: 13px; font-weight: 500; border: 1px solid var(--line); background: #12162a; color: var(--ink); border-radius: 999px; padding: 8px 14px; cursor: pointer; }
+    button:hover { border-color: var(--cyan); color: var(--cyan); }
+    button.primary { background: linear-gradient(180deg, #1a2a44, #10182c); color: var(--cyan); }
+    .stats { display: flex; flex-wrap: wrap; gap: 18px 28px; margin: 8px 0 40px; font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--muted); }
+    .stats strong { color: var(--ink); font-weight: 500; }
+    section { margin: 48px 0; }
+    h2 { font-family: "Instrument Serif", Georgia, serif; font-size: 32px; font-weight: 400; margin-bottom: 12px; }
+    p { color: #c9d2ea; line-height: 1.65; margin: 0 0 14px; max-width: 70ch; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 18px; }
+    .card { border: 1px solid var(--line); border-radius: 14px; padding: 18px; background: linear-gradient(180deg, rgba(18,22,42,0.8), rgba(10,12,24,0.8)); }
+    .card h3 { font-size: 15px; font-weight: 500; margin-bottom: 8px; color: var(--cyan); }
+    .card p { font-size: 14px; margin: 0; color: var(--muted); }
+    blockquote { border-left: 2px solid var(--violet); padding: 4px 0 4px 16px; color: #d7def4; font-family: "Instrument Serif", Georgia, serif; font-size: 22px; line-height: 1.35; margin: 18px 0 8px; max-width: 38ch; }
+    .cite { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--muted); }
+    footer { margin-top: 64px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    @media (max-width: 720px) { .hud { grid-template-columns: 1fr 1fr; } .actions { grid-column: 1 / -1; } header.top { flex-direction: column; align-items: flex-start; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <div class="mark">prestigesf · <b>quantumrain.grok.me</b></div>
+      <div class="mark">PRL 134, 093401 · 2025</div>
+    </header>
+    <h1>Quantum <em>rain</em></h1>
+    <p class="lede">A self-bound droplet of ultracold potassium and rubidium stretches into a filament, then breaks into a train of smaller droplets. That is the first laboratory analog of Plateau–Rayleigh instability in a quantum fluid.</p>
+    <div class="stage">
+      <canvas id="rain" aria-label="Quantum rain simulation"></canvas>
+      <div class="hud">
+        <label>Attraction <input id="attr" type="range" min="0.2" max="1.6" step="0.01" value="0.92" /></label>
+        <label>Stretch <input id="stretch" type="range" min="0.4" max="2.2" step="0.01" value="1.25" /></label>
+        <label>Fluctuations <input id="noise" type="range" min="0" max="1.4" step="0.01" value="0.35" /></label>
+        <div class="actions">
+          <button class="primary" id="burst" type="button">Trigger breakup</button>
+          <button id="reset" type="button">Reset filament</button>
+        </div>
+      </div>
+    </div>
+    <div class="stats">
+      <div>species <strong>⁴¹K + ⁸⁷Rb</strong></div>
+      <div>regime <strong>self-bound quantum droplet</strong></div>
+      <div>instability <strong>quantum Plateau–Rayleigh</strong></div>
+      <div>droplets <strong id="count">—</strong></div>
+    </div>
+    <section>
+      <h2>What actually happened</h2>
+      <p>In March 2025, Cavicchioli, Fort, and collaborators at LENS / CNR-INO / Florence reported the dynamical formation of multiple quantum droplets in a heteronuclear Bose–Bose mixture. They quenched a ⁴¹K–⁸⁷Rb gas from non-interacting to strongly attractive inside an optical waveguide. A single self-bound droplet formed in an excited compression-elongation mode, stretched past a critical length, and split into two or more smaller droplets.</p>
+      <p>The number of fragments rose as interspecies attraction decreased and atom number increased — the signature of capillary (Plateau–Rayleigh) instability driven by a quantum surface tension. Mean-field attraction tries to collapse the cloud; Lee–Huang–Yang fluctuations stabilize a liquid-like droplet that can then rain.</p>
+      <blockquote>A stretching quantum droplet breaks like water leaving a faucet.</blockquote>
+      <p class="cite">Cavicchioli et al., Phys. Rev. Lett. 134, 093401 (7 March 2025)</p>
+    </section>
+    <section>
+      <h2>Why the pieces matter</h2>
+      <div class="grid">
+        <article class="card"><h3>Self-bound droplets</h3><p>Stabilized by a contest between attractive mean-field forces and repulsive LHY fluctuations. No box required.</p></article>
+        <article class="card"><h3>Capillary analog</h3><p>The same wavelength selection that breaks a water jet appears here. Most-unstable mode near λ ≈ 9R₀.</p></article>
+        <article class="card"><h3>Ordered arrays</h3><p>Controlled fragmentation is a path to droplet lattices — addressable mesoscopic quantum objects.</p></article>
+        <article class="card"><h3>Hydrodynamics testbed</h3><p>A clean place to watch nonlinear quantum fluid dynamics in a two-component bosonic mixture.</p></article>
+      </div>
+    </section>
+    <section>
+      <h2>How to read the canvas</h2>
+      <p>The simulation is a visual model, not a Gross–Pitaevskii integrator. Particles cohere into a filament, feel a surface-tension-like force, and pick up fluctuation noise. Raise stretch or hit Trigger breakup to cross the instability. Attraction tightens the droplet; fluctuations seed the pinches the way LHY jitter seeds a real filament.</p>
+    </section>
+    <section>
+      <h2>Sources</h2>
+      <p>Primary result: L. Cavicchioli, C. Fort, F. Ancilotto, M. Modugno, F. Minardi, and A. Burchianti, “Dynamical Formation of Multiple Quantum Droplets in a Bose-Bose Mixture,” <em>Phys. Rev. Lett.</em> <strong>134</strong>, 093401 (2025). DOI <a href="https://doi.org/10.1103/PhysRevLett.134.093401">10.1103/PhysRevLett.134.093401</a>.</p>
+      <p>Context: <a href="https://grokipedia.com/page/Quantum_rain">Grokipedia — Quantum rain</a> · <a href="https://www.laserfocusworld.com/quantum/article/55294428/researchers-create-quantum-rain">Laser Focus World</a> · Petrov, PRL 115, 155302 (2015) · Cabrera et al., Science 359, 301 (2018).</p>
+    </section>
+    <footer>
+      <div>quantumrain.grok.me · MIT · filled from an empty repo</div>
+      <div><a href="https://github.com/prestigesf/quantumrain.grok.me">source</a></div>
+    </footer>
+  </div>
+  <script>
+    const canvas = document.getElementById("rain");
+    const ctx = canvas.getContext("2d");
+    const attr = document.getElementById("attr");
+    const stretch = document.getElementById("stretch");
+    const noise = document.getElementById("noise");
+    const countEl = document.getElementById("count");
+    let w, h, dpr, drops, phase, bursting;
+    function resize() {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      w = canvas.clientWidth; h = canvas.clientHeight;
+      canvas.width = Math.floor(w * dpr); canvas.height = Math.floor(h * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    function seed(broken = false) {
+      drops = []; const n = 220; const cx = w * 0.5; const top = h * 0.12;
+      const len = h * 0.62 * Number(stretch.value);
+      for (let i = 0; i < n; i++) {
+        const t = i / (n - 1);
+        const wave = Math.sin(t * Math.PI * 6) * (broken ? 18 : 3);
+        drops.push({ x: cx + wave + (Math.random() - 0.5) * 6, y: top + t * len, vx: (Math.random() - 0.5) * 0.2, vy: 0.15 + Math.random() * 0.1, r: 2.2 + Math.random() * 1.6 });
+      }
+      phase = 0; bursting = broken;
+    }
+    function step() {
+      phase += 0.016; const a = Number(attr.value); const nse = Number(noise.value);
+      const cx = w * 0.5; const g = bursting ? 0.045 : 0.008;
+      for (const p of drops) {
+        p.vx += -(p.x - cx) * 0.004 * a; p.vy += g;
+        p.vx += (Math.random() - 0.5) * 0.12 * nse; p.vy += (Math.random() - 0.5) * 0.04 * nse;
+        if (!bursting) p.vx += Math.sin((p.y / h) * Math.PI * 5 + phase) * (0.35 + nse) * 0.08;
+        p.vx *= 0.96; p.vy *= bursting ? 0.995 : 0.92; p.x += p.vx; p.y += p.vy;
+        if (p.y > h + 20) { p.y = -10; p.x = cx + (Math.random() - 0.5) * 80; p.vy = 0.4 + Math.random(); }
+      }
+      for (let i = 0; i < drops.length; i += 3) {
+        const p = drops[i]; const q = drops[Math.min(i + 1, drops.length - 1)];
+        const ddx = q.x - p.x, ddy = q.y - p.y, dist = Math.hypot(ddx, ddy) || 1;
+        const pull = (dist - 7) * 0.002 * a;
+        p.vx += ddx * pull; p.vy += ddy * pull * 0.4; q.vx -= ddx * pull; q.vy -= ddy * pull * 0.4;
+      }
+    }
+    function draw() {
+      ctx.clearRect(0, 0, w, h);
+      const grd = ctx.createLinearGradient(0, 0, 0, h);
+      grd.addColorStop(0, "rgba(124,231,255,0.05)"); grd.addColorStop(1, "rgba(176,140,255,0.04)");
+      ctx.fillStyle = grd; ctx.fillRect(0, 0, w, h);
+      ctx.save(); ctx.globalCompositeOperation = "lighter";
+      for (const p of drops) {
+        const g2 = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 5);
+        g2.addColorStop(0, "rgba(180,240,255,0.95)"); g2.addColorStop(0.35, "rgba(124,231,255,0.35)"); g2.addColorStop(1, "rgba(176,140,255,0)");
+        ctx.fillStyle = g2; ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 5, 0, Math.PI * 2); ctx.fill();
+      }
+      ctx.restore();
+      let clusters = 0, lastY = -999;
+      const sorted = drops.filter(p => p.y > h * 0.35).sort((a,b) => a.y - b.y);
+      for (const p of sorted) { if (p.y - lastY > 16) clusters += 1; lastY = p.y; }
+      countEl.textContent = bursting ? String(Math.max(3, Math.min(clusters, 24))) : "filament";
+    }
+    function loop() { step(); draw(); requestAnimationFrame(loop); }
+    window.addEventListener("resize", () => { resize(); seed(bursting); });
+    document.getElementById("burst").addEventListener("click", () => {
+      bursting = true; for (const p of drops) { p.vy += 0.6 + Math.random(); p.vx += (Math.random() - 0.5) * 1.8; }
+    });
+    document.getElementById("reset").addEventListener("click", () => seed(false));
+    stretch.addEventListener("input", () => { if (!bursting) seed(false); });
+    resize(); seed(false); loop();
+  </script>
+</body>
+</html>
