@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PACK IN → DELTA OUT · quantumrain.grok.me</title>
-  <meta name="description" content="PrestigeSF operator face. Drop a law pack. Measure whether the engine got stronger." />
+  <title>PrestigeSF Engine Console · PACK IN → DELTA OUT</title>
+  <meta name="description" content="PrestigeSF Engine Console. Drop a law pack. Measure whether the engine got stronger." />
   <meta name="theme-color" content="#0b0d12" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -19,15 +19,14 @@
     a { color: var(--accent); text-decoration: none; }
     .wrap { max-width: 1120px; margin: 0 auto; padding: 22px 18px 80px; }
     .kicker { font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); }
-    h1 { font-size: clamp(28px, 5vw, 42px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.1; margin: 10px 0 12px; max-width: 18ch; }
+    h1 { font-size: clamp(28px, 5vw, 42px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.1; margin: 10px 0 12px; max-width: 22ch; }
     .lede { color: var(--muted); max-width: 62ch; line-height: 1.55; margin-bottom: 18px; }
     .row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
-    button, .btn {
+    button {
       font: 500 13px/1 "IBM Plex Sans", sans-serif; border-radius: 10px; padding: 11px 16px; cursor: pointer; border: 1px solid var(--line);
       background: var(--elev); color: var(--ink);
     }
     button.primary { background: var(--accent); color: var(--accent-fg); border-color: var(--accent); font-weight: 600; }
-    button:disabled { opacity: 0.45; cursor: not-allowed; }
     .tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 22px; }
     .tile { background: var(--elev); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; }
     .tile .l { font-family: "IBM Plex Mono", monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
@@ -66,21 +65,19 @@
 </head>
 <body>
   <div class="wrap">
-    <p class="kicker">Private operating dashboard · quantumrain.grok.me</p>
+    <p class="kicker">PrestigeSF Engine Console · private operating dashboard</p>
     <h1>PACK IN → DELTA OUT</h1>
     <p class="lede">Sit here. Choose an engine. Drop a law pack. Measure whether it got stronger. A run is not complete until it produces a measurable hardening delta or a signed VALIDATED_NO_CHANGE receipt.</p>
     <div class="row">
       <button class="primary" id="runBtn" type="button">Run selected pack</button>
       <button id="resetBtn" type="button">Reset live score</button>
     </div>
-
     <div class="tiles">
       <div class="tile"><div class="l">Engine</div><div class="v">DeadlineSF</div><div class="h">Decision API · additive wrap</div></div>
       <div class="tile"><div class="l">Engine strength</div><div class="v" id="scoreTile">41.5 / 100</div><div class="h" id="classTile">coverage PARTIAL</div></div>
       <div class="tile"><div class="l">Last result</div><div class="v" id="resultTile">none</div><div class="h" id="packTile">no pack run yet</div></div>
       <div class="tile"><div class="l">Receipts this browser</div><div class="v" id="countTile">0</div><div class="h">local only · not the private ledger</div></div>
     </div>
-
     <div class="grid">
       <section class="card">
         <h2>Law packs</h2>
@@ -93,14 +90,12 @@
         <div class="bars" id="bars"></div>
       </section>
     </div>
-
     <section class="card" style="margin-top:16px">
       <h2>Engine Delta Receipts</h2>
       <ul class="receipts" id="receipts"></ul>
     </section>
-
     <footer>
-      This public face does not vendor DeadlineSF, compiled YAML packs, or the Engine Hardening Layer.<br />
+      PrestigeSF Engine Console public face. Does not vendor DeadlineSF, compiled packs, or the hardening layer.<br />
       Those stay in private prestigesf/the-engine-. Engine strength is evidence. Revenue is a scenario. They are never added together.
     </footer>
   </div>
@@ -124,15 +119,11 @@
       { id: "detection", label: "Detection accuracy", max: 20 },
       { id: "ledger", label: "Ledger continuity", max: 15 }
     ];
-    const KEY = "qr-operator-v1";
+    const KEY = "prestige-engine-console-v1";
     const state = JSON.parse(localStorage.getItem(KEY) || "null") || { score: 41.5, applied: ["AB2013"], receipts: [] };
     let selected = PACKS.find(p => !state.applied.includes(p.id))?.id || PACKS[0].id;
-
     function save() { localStorage.setItem(KEY, JSON.stringify(state)); }
-    function split(score) {
-      const c = score * 0.28, r = score * 0.22, p = score * 0.22, d = 0, l = score * 0.18;
-      return [c, r, p, d, l];
-    }
+    function split(score) { return [score * 0.28, score * 0.22, score * 0.22, 0, score * 0.18]; }
     function render() {
       document.getElementById("scoreTile").textContent = state.score.toFixed(1) + " / 100";
       document.getElementById("bigScore").innerHTML = state.score.toFixed(1) + " <small>/ 100</small>";
@@ -143,17 +134,13 @@
       document.getElementById("packTile").textContent = last ? last.pack : "no pack run yet";
       document.getElementById("packs").innerHTML = PACKS.map(p => {
         const used = state.applied.includes(p.id);
-        return `<button class="pack ${p.id===selected?"on":""}" data-id="${p.id}" type="button">
-          <div><b>${p.name}</b><span>${p.note}</span></div>
-          <div class="id">${p.id}${used?" · in": ""}</div>
-        </button>`;
+        return `<button class="pack ${p.id===selected?"on":""}" data-id="${p.id}" type="button"><div><b>${p.name}</b><span>${p.note}</span></div><div class="id">${p.id}${used?" · in":""}</div></button>`;
       }).join("");
       const pts = split(state.score);
       document.getElementById("bars").innerHTML = COMP.map((c,i) => {
         const v = Math.min(c.max, +pts[i].toFixed(1));
         const unm = c.id === "detection";
-        return `<div><div class="bar-row"><span>${c.label}${unm?" · unmeasured": ""}</span><span>${unm?"0":v} / ${c.max}</span></div>
-          <div class="track"><div class="fill" style="width:${unm?0:(v/c.max)*100}%"></div></div></div>`;
+        return `<div><div class="bar-row"><span>${c.label}${unm?" · unmeasured":""}</span><span>${unm?"0":v} / ${c.max}</span></div><div class="track"><div class="fill" style="width:${unm?0:(v/c.max)*100}%"></div></div></div>`;
       }).join("");
       document.getElementById("receipts").innerHTML = state.receipts.length
         ? state.receipts.map(r => `<li><span class="chip ${r.result}">${r.result}</span> ${r.pack} · ${r.before.toFixed(1)} → ${r.after.toFixed(1)} · ${r.id}</li>`).join("")
@@ -162,25 +149,17 @@
     function run() {
       const pack = PACKS.find(p => p.id === selected);
       const before = state.score;
-      let result = pack.kind;
-      let after = before;
-      if (state.applied.includes(pack.id) && pack.once) {
-        result = "VALIDATED_NO_CHANGE";
-      } else if (pack.delta === 0) {
+      let result = pack.kind, after = before;
+      if (state.applied.includes(pack.id) || pack.delta === 0) {
         result = "VALIDATED_NO_CHANGE";
         if (!state.applied.includes(pack.id)) state.applied.push(pack.id);
-      } else if (state.applied.includes(pack.id)) {
-        result = "VALIDATED_NO_CHANGE";
       } else {
         after = Math.min(100, +(before + pack.delta).toFixed(1));
         state.applied.push(pack.id);
         result = after > before ? "IMPROVED" : "VALIDATED_NO_CHANGE";
       }
       state.score = after;
-      state.receipts.unshift({
-        id: "edr_" + Math.random().toString(16).slice(2, 10),
-        pack: pack.id, result, before, after, t: new Date().toISOString()
-      });
+      state.receipts.unshift({ id: "edr_" + Math.random().toString(16).slice(2, 10), pack: pack.id, result, before, after, t: new Date().toISOString() });
       const line = document.getElementById("deltaLine");
       const d = +(after - before).toFixed(1);
       line.className = "delta " + (d > 0 ? "up" : d < 0 ? "down" : "flat");
