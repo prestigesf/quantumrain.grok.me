@@ -1,0 +1,80 @@
+:root {
+  --bg: #071018;
+  --panel: rgba(8, 14, 20, 0.78);
+  --line: rgba(90, 220, 210, 0.22);
+  --fg: #e7f4f2;
+  --muted: #8aa3a8;
+  --accent: #5eead4;
+  --accent-fg: #04221c;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body, #root { min-height: 100%; }
+body {
+  font-family: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  color: var(--fg);
+  background:
+    radial-gradient(1200px 600px at 70% 80%, #12344a 0%, transparent 55%),
+    linear-gradient(180deg, #08131c 0%, #050a10 100%);
+}
+.stage { min-height: 100vh; position: relative; overflow: hidden; }
+.rain { pointer-events: none; position: fixed; inset: 0; z-index: 0; }
+.rain span {
+  position: absolute; top: -10%; width: 1px; height: 18%;
+  background: linear-gradient(to bottom, transparent, rgba(180, 230, 255, 0.55));
+  animation: fall linear infinite;
+}
+@keyframes fall { to { transform: translateY(140vh); } }
+.bar {
+  position: relative; z-index: 2;
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 12px; padding: 14px 18px;
+}
+.brand { display: flex; align-items: center; gap: 10px; }
+.tri { width: 18px; height: 18px; background: var(--accent); clip-path: polygon(50% 0, 100% 100%, 0 100%); }
+.brand b { display: block; font-size: 13px; }
+.brand small {
+  display: block; font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 10px; letter-spacing: 0.14em; color: var(--accent);
+}
+.pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.pills span {
+  border: 1px solid var(--line); border-radius: 999px; padding: 5px 10px;
+  font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 10px; letter-spacing: 0.08em;
+}
+.rain-btn {
+  position: absolute; z-index: 3; top: 62px; left: 50%; transform: translateX(-50%);
+  border: 0; border-radius: 999px; padding: 8px 14px; cursor: pointer;
+  background: rgba(0,0,0,0.55); color: var(--fg); font: 600 11px/1 inherit;
+  letter-spacing: 0.12em; text-transform: uppercase;
+}
+.console, .right { position: relative; z-index: 2; }
+.console {
+  width: min(380px, calc(100vw - 24px));
+  margin: 64px 16px 24px;
+  background: var(--panel); backdrop-filter: blur(16px);
+  border: 1px solid var(--line); border-radius: 22px; padding: 22px 20px 24px;
+}
+.kicker {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted);
+  margin-bottom: 8px;
+}
+h1 { font-size: 28px; font-weight: 600; margin-bottom: 12px; }
+.pack-id, .stat { font-size: 13px; margin-bottom: 4px; }
+.file, .muted, .hint { font-size: 12px; color: var(--muted); line-height: 1.45; }
+.secs { list-style: none; margin: 12px 0; color: var(--muted); font-size: 13px; }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0; }
+button {
+  border: 1px solid var(--line); background: transparent; color: var(--fg);
+  border-radius: 12px; padding: 9px 12px; cursor: pointer; font: 600 13px/1 inherit;
+}
+button.primary { background: var(--accent); color: var(--accent-fg); border-color: var(--accent); }
+.right { width: min(420px, calc(100vw - 24px)); margin: 0 16px 40px; display: grid; gap: 12px; }
+@media (min-width: 960px) { .right { position: absolute; right: 18px; top: 120px; } }
+.card {
+  background: var(--panel); backdrop-filter: blur(16px);
+  border: 1px solid var(--line); border-radius: 18px; padding: 16px;
+}
+.mono, ol { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 11px; line-height: 1.55; color: var(--muted); }
+.pin { margin-bottom: 10px; color: var(--fg); }
+ol { list-style: none; max-height: 240px; overflow: auto; }
