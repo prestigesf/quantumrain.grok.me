@@ -2,25 +2,23 @@
 
 **PACK IN → DELTA OUT**
 
-Public operator face. Drop a law pack. Watch the engine strength score move. A run is not done until it produces a measurable hardening delta or a signed `VALIDATED_NO_CHANGE` receipt.
+Public operator face for the PrestigeSF engine family.
 
-Host slug is still `quantumrain.grok.me` (Grok app / GitHub repo name). Product name is PrestigeSF Engine Console.
+- Product name: PrestigeSF Engine Console
+- Mark: PACK IN → DELTA OUT
+- Host slug: `quantumrain.grok.me` (Grok / GitHub name only)
 
-The fully wired console — DeadlineSF Decision API, compiled packs, Engine Hardening Layer, frozen receipts — stays in private `prestigesf/the-engine-`. Do not vendor engines here.
+This page is the face. Compiled law packs, the DeadlineSF Decision API, and the Engine Hardening Layer stay in private `prestigesf/the-engine-`.
 
-## Loop
+## Sources
 
-```
-ENGINE → PACK → BEFORE STATE → RUN → NATIVE OUTPUT
-  → AFTER STATE → HARDENING LAYER → DELTA OUT
-  → STRENGTH SCORE → RECEIPT → LEDGER
-```
+| Source | Class | Baseline |
+| --- | --- | --- |
+| LIVE EMPTY | LIVE | 0 — nothing measured |
+| LIVE · DEADLINESF | LIVE | 41.5 PARTIAL (Phase 19 AB 2013) |
+| WORKED EXAMPLE | ILLUSTRATIVE_EXAMPLE | labeled example packs |
 
-| Result | Meaning |
-| --- | --- |
-| `IMPROVED` | Measured structural delta. Not declared. |
-| `VALIDATED_NO_CHANGE` | Completeness gate passed. No invented improvement. |
-| `REGRESSED` | Overrides improvement. |
+Detection accuracy is unmeasured and scores 0. A run is not complete until it produces a measurable hardening delta or a signed `VALIDATED_NO_CHANGE` receipt.
 
 ## Local
 
