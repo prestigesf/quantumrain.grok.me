@@ -66,10 +66,10 @@ export function runPack(pack, facts = DEFAULT_FACTS, controls = []) {
   };
 }
 
-export function runGlassId(glassId, extraPack) {
-  if (extraPack && extraPack.law_id) return runPack(extraPack);
-  const lawId = GLASS_TO_LAW[glassId];
-  if (lawId && bundle.packs[lawId]) return runPack(bundle.packs[lawId]);
+export function runGlassId(glassId, extraPack, controls = []) {
+  if (extraPack && extraPack.law_id) return runPack(extraPack, DEFAULT_FACTS, controls);
+  const lawId = GLASS_TO_LAW[glassId] || glassId;
+  if (lawId && bundle.packs[lawId]) return runPack(bundle.packs[lawId], DEFAULT_FACTS, controls);
   const hardening = STRENGTH_CHAIN.find((row) => row.pack_id === glassId);
   if (hardening) {
     return {
@@ -110,6 +110,23 @@ export function runGlassId(glassId, extraPack) {
 
 export function loadDroppedFile(text, name) {
   return parsePackText(text, name);
+}
+
+export function allCompiledGlass() {
+  return Object.values(bundle.packs).map((pack) => ({
+    id: pack.law_id,
+    name: pack.metadata?.short_name || pack.title,
+    file: `${pack.law_id}.yaml`,
+    sections: (pack.requirements || []).map((r) => r.id).slice(0, 8),
+    compiled: pack,
+  }));
+}
+
+export function satisfiedControls(pack) {
+  if (!pack?.requirements) return [];
+  return pack.requirements.flatMap((r) =>
+    (r.controls || []).map((c) => ({ control_id: c.control_id, satisfaction: "SATISFIED" })),
+  );
 }
 
 export { bundle, runLog };
