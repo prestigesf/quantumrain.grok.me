@@ -1,4 +1,5 @@
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
+import { LIVE_HEAD, BUNDLE_SHA, STRENGTH_CHAIN, runGlassId, loadDroppedFile } from "./engine/client.js";
 
 const PIN = "ead75ac1e016";
 const HOST = "prestigesf-the-engine";
@@ -37,7 +38,7 @@ const PACKS = [
   { id: "SBOM-QBOM", name: "SBOM + QBOM joint release", file: "SBOM-QBOM.json", sections: ["same release", "crypto-to-component", "no secrets"], delta: 0 },
 ];
 
-function shortId() {
+function receiptId() {
   return Math.random().toString(16).slice(2, 10);
 }
 
@@ -45,33 +46,66 @@ export default function App() {
   const [packIndex, setPackIndex] = useState(0);
   const [rain, setRain] = useState(true);
   const [paused, setPaused] = useState(false);
-  const [score] = useState(100);
+  const [score] = useState(LIVE_HEAD);
+  const [dropped, setDropped] = useState(null);
+  const fileRef = useRef(null);
   const [stream, setStream] = useState([
     "LIVE  PrestigeSF Control Plane  rain on the glass",
-    `HOST  pinned engine  ${HOST} @ ${PIN}`,
-    "WAIT  Intercept runs PACK-11-DGCL-GOV through the real engine",
-    "DRIFT  none",
+    `HOST  DeadlineSF engine.mjs  bundle ${BUNDLE_SHA.slice(0, 12)}`,
+    "WAIT  Intercept runs the loaded pack through engine.decide",
+    "DROP  use Drop file to load your own YAML",
   ]);
-  const [delta, setDelta] = useState("No live run yet. Intercept to measure PACK-11 against the pinned engine.");
-  const pack = PACKS[packIndex];
+  const [delta, setDelta] = useState("No live run yet. Intercept to run engine.decide on the loaded pack.");
+  const pack = dropped || PACKS[packIndex];
   const drops = useMemo(
     () => Array.from({ length: 48 }, (_, i) => ({ left: `${(i * 17) % 100}%`, delay: `${(i % 12) * 0.22}s`, dur: `${1.4 + (i % 7) * 0.18}s` })),
     [],
   );
   function push(line) { setStream((s) => [line, ...s].slice(0, 24)); }
   function intercept() {
-    const result = pack.delta === 0 ? "VALIDATED_NO_CHANGE" : "IMPROVED";
-    setDelta(`${pack.id} · ${result} · ${score.toFixed(1)} → ${score.toFixed(1)} · receipt edr_${shortId()}`);
-    push(`RUN   ${pack.id}  ${result}`);
-    push("RAIN  glass sealed");
+    const result = runGlassId(pack.id, pack.compiled);
+    const s = result.strength;
+    const rid = `edr_${receiptId()}`;
+    const line = `${result.law_id} · ${result.outcome} · ${result.applicability} · ${s.score_before} → ${s.score_after} (Δ ${s.change}) · ${rid}`;
+    setDelta(line);
+    try {
+      const log = JSON.parse(localStorage.getItem("qr-receipts") || "[]");
+      log.unshift({ id: rid, ...result });
+      localStorage.setItem("qr-receipts", JSON.stringify(log.slice(0, 50)));
+    } catch {
+      /* ignore */
+    }
+    push(`RUN   ${result.law_id}  ${result.outcome}  ${s.score_before}→${s.score_after}`);
+    push(`APP   ${result.applicability}`);
+    if (result.reasons[0]) push(`WHY   ${result.reasons[0].code}`);
     push("WAIT  drop a pack or intercept");
-    push("DRIFT none");
   }
   function dropPack() {
+    setDropped(null);
     const next = (packIndex + 1) % PACKS.length;
     setPackIndex(next);
     push(`PACK  loaded ${PACKS[next].id}`);
     push("WAIT  intercept to measure");
+  }
+  async function onFile(ev) {
+    const file = ev.target.files?.[0];
+    ev.target.value = "";
+    if (!file) return;
+    try {
+      const text = await file.text();
+      const compiled = loadDroppedFile(text, file.name);
+      setDropped({
+        id: compiled.law_id,
+        name: compiled.title,
+        file: file.name,
+        sections: (compiled.requirements || []).map((r) => r.id).slice(0, 8),
+        compiled,
+      });
+      push(`PACK  dropped ${compiled.law_id} (${compiled.requirements.length} requirements)`);
+      push("WAIT  intercept to run engine.decide");
+    } catch (err) {
+      push(`ERR   ${err.message || String(err)}`);
+    }
   }
   return (
     <div className="stage">
@@ -110,14 +144,19 @@ export default function App() {
         <div className="actions">
           <button className="primary" type="button" onClick={intercept}>Intercept</button>
           <button type="button" onClick={dropPack}>Drop pack</button>
+          <button type="button" onClick={() => fileRef.current?.click()}>Drop file</button>
+          <input ref={fileRef} type="file" accept=".yaml,.yml,.json" hidden onChange={onFile} />
           <button type="button" onClick={() => setPaused((v) => !v)}>{paused ? "Resume" : "Pause"}</button>
         </div>
-        <p className="hint">Intercept sends {pack.id.split("-").slice(0, 2).join("-")} through the pinned Prestige Engine. GoldTrac leaf replay is DEMO FIXTURE.</p>
+        <p className="hint">Intercept runs engine.decide from DeadlineSF engine.mjs. Drop file loads your YAML. Strength chain is the engine ledger; a new pack at 100 does not invent points.</p>
         <p className="kicker" style={{ marginTop: 22 }}>Inventory</p>
         <p className="stat">11 registered engines</p>
         <p className="stat">17 active compliance/control packs</p>
         <p className="muted">8 newly executed through Prestige Engine · 11 pre-existing mapped packs</p>
-        <p className="kicker" style={{ marginTop: 16 }}>Newly executed through Prestige Engine</p>
+        <p className="kicker" style={{ marginTop: 16 }}>Strength ledger</p>
+        {STRENGTH_CHAIN.map((row) => (
+          <p key={row.pack_id} className="stat">{row.pack_id} {row.score_before}→{row.score_after} Δ{row.change}</p>
+        ))}
         {EXECUTED.map((id) => <p key={id} className="stat">{id}</p>)}
         <p className="kicker" style={{ marginTop: 16 }}>Pre-existing mapped packs</p>
         {MAPPED.map((name) => <p key={name} className="muted">{name}</p>)}

@@ -1,0 +1,325 @@
+{
+  "generated_at": "2026-09-25T19:32:37.761Z",
+  "engine": "deadlinesf/netlify/functions/engine.mjs",
+  "packs_commit": "838c737",
+  "bundle_sha256": "2bd41a911eae198a5406fbec79039b81577e97030ceca6c5c3619f33fa8ae350",
+  "pack_count": 14,
+  "facts_used": {
+    "ships_or_operates_software": true,
+    "implements_cryptography": true,
+    "consumes_cryptographic_libraries": true,
+    "terminates_tls_or_issues_certificates": true,
+    "claims_pqc_or_quantum_safe": true,
+    "claims_supply_chain_transparency": true,
+    "sells_to_us_federal_government": false,
+    "contract_requires_sbom": true,
+    "in_scope_eu_cyber_resilience_act": false,
+    "system_tier_high_value_asset": false,
+    "system_tier_federal_covered": false,
+    "federal_covered_system": false,
+    "develops_generative_ai_system": true,
+    "provides_generative_ai_system": true,
+    "publicly_accessible_in_ca": true,
+    "genai_released_on_or_after_2022_01_01": true,
+    "sole_purpose_security_aircraft_or_defense": false
+  },
+  "hardening_strength_chain": [
+    {
+      "pack_id": "PQC-FIPS204",
+      "source": "the-engine- ledger",
+      "score_before": 41.5,
+      "score_after": 44.5,
+      "change": 3,
+      "result": "IMPROVED"
+    },
+    {
+      "pack_id": "SUITE-TC01-36",
+      "source": "the-engine- ledger",
+      "score_before": 44.5,
+      "score_after": 87.5,
+      "change": 43,
+      "result": "IMPROVED"
+    },
+    {
+      "pack_id": "FRONTIER-TC37-46",
+      "source": "the-engine- ledger",
+      "score_before": 87.5,
+      "score_after": 92.5,
+      "change": 5,
+      "result": "IMPROVED"
+    },
+    {
+      "pack_id": "PROVENANCE-GAPS",
+      "source": "the-engine- ledger",
+      "score_before": 92.5,
+      "score_after": 92.5,
+      "change": 0,
+      "result": "VALIDATED_NO_CHANGE"
+    },
+    {
+      "pack_id": "EVIDENCE-REPLAY",
+      "source": "the-engine- ledger",
+      "score_before": 92.5,
+      "score_after": 100,
+      "change": 7.5,
+      "result": "IMPROVED"
+    }
+  ],
+  "live_head_score": 100,
+  "decisions": [
+    {
+      "law_id": "ab2013",
+      "short_name": "AB 2013",
+      "title": "California Generative AI Training Data Transparency Act",
+      "requirements": 5,
+      "applicability": "APPLIES",
+      "outcome": "HUMAN_REVIEW",
+      "confidence": "LOW",
+      "escalation": "INSUFFICIENT_EVIDENCE",
+      "missing": [],
+      "reasons": [
+        "REQUIREMENT_STATUS_UNKNOWN",
+        "REQUIREMENT_STATUS_UNKNOWN",
+        "REQUIREMENT_STATUS_UNKNOWN",
+        "REQUIREMENT_STATUS_UNKNOWN",
+        "REQUIREMENT_STATUS_UNKNOWN"
+      ]
+    },
+    {
+      "law_id": "cisa-sbom-2026",
+      "short_name": "SBOM 2026",
+      "title": "Software Bill of Materials (CISA 2026 Minimum Elements)",
+      "requirements": 5,
+      "applicability": "APPLIES",
+      "outcome": "HUMAN_REVIEW",
+      "confidence": "LOW",
+      "escalation": "INSUFFICIENT_EVIDENCE",
+      "missing": [],
+      "reasons": [
+        "REQUIREMENT_STATUS_UNKNOWN",
+        "REQUIREMENT_STATUS_UNKNOWN",
+        "REQUIREMENT_STATUS_UNKNOWN",
+        "REQUIREMENT_STATUS_UNKNOWN",
+        "REQUIREMENT_STATUS_UNKNOWN"
+      ]
+    },
+    {
+      "law_id": "co_sb24_205",
+      "short_name": "Colorado AI Act",
+      "title": "Colorado Artificial Intelligence Act",
+      "requirements": 7,
+      "applicability": "INDETERMINATE",
+      "outcome": "HUMAN_REVIEW",
+      "confidence": "LOW",
+      "escalation": "APPLICABILITY_UNRESOLVED",
+      "missing": [
+        "does_business_in_co",
+        "high_risk_ai_system",
+        "role"
+      ],
+      "reasons": [
+        "APPLICABILITY_UNRESOLVED",
+        "MISSING_FACTS"
+      ]
+    },
+    {
+      "law_id": "cyclonedx-cbom-1.6",
+      "short_name": "QBOM / CBOM 1.6",
+      "title": "Cryptographic Bill of Materials (CycloneDX 1.6 CBOM)",
+      "requirements": 5,
+      "applicability": "APPLIES",
+      "outcome": "HUMAN_REVIEW",
+      "confidence": "LOW",
+      "escalation": "INSUFFICIENT_EVIDENCE",
+      "missing": [],
+      "reasons": [
+        "REQUIREMENT_STATUS_UNKNOWN",
+        "REQUIREMENT_STATUS_UNKNOWN",
+        "REQUIREMENT_STATUS_UNKNOWN",
+        "REQUIREMENT_STATUS_UNKNOWN",
+        "REQUIREMENT_STATUS_UNKNOWN"
+      ]
+    },
+    {
+      "law_id": "cyclonedx-cbom-sbom",
+      "short_name": "SBOM+QBOM",
+      "title": "Software and Cryptographic Bills of Materials (SBOM + CBOM)",
+      "requirements": 6,
+      "applicability": "APPLIES",
+      "outcome": "HUMAN_REVIEW",
+      "confidence": "LOW",
+      "escalation": "INSUFFICIENT_EVIDENCE",
+      "missing": [],
+      "reasons": [
+        "REQUIREMENT_STATUS_UNKNOWN",
+        "REQUIREMENT_STATUS_UNKNOWN",
+        "REQUIREMENT_STATUS_UNKNOWN",
+        "REQUIREMENT_STATUS_UNKNOWN",
+        "REQUIREMENT_STATUS_UNKNOWN",
+        "REQUIREMENT_STATUS_UNKNOWN"
+      ]
+    },
+    {
+      "law_id": "deployment_controls",
+      "short_name": "Deployment Controls",
+      "title": "Operational Deployment, Compute Threshold, and Sovereign Compute Controls",
+      "requirements": 4,
+      "applicability": "INDETERMINATE",
+      "outcome": "HUMAN_REVIEW",
+      "confidence": "LOW",
+      "escalation": "APPLICABILITY_UNRESOLVED",
+      "missing": [
+        "high_impact_autonomous_deployment",
+        "training_flops_above_1e26",
+        "cross_border_personal_data_transfer",
+        "government_or_defense_workload"
+      ],
+      "reasons": [
+        "APPLICABILITY_UNRESOLVED",
+        "MISSING_FACTS"
+      ]
+    },
+    {
+      "law_id": "eo_14412",
+      "short_name": "EO 14412",
+      "title": "Securing the Nation Against Advanced Cryptographic Attacks",
+      "requirements": 2,
+      "applicability": "DOES_NOT_APPLY",
+      "outcome": "ALLOW",
+      "confidence": "HIGH",
+      "escalation": "NONE",
+      "missing": [],
+      "reasons": [
+        "LAW_NOT_APPLICABLE"
+      ]
+    },
+    {
+      "law_id": "eu_ai_act",
+      "short_name": "EU AI Act",
+      "title": "EU Artificial Intelligence Act",
+      "requirements": 10,
+      "applicability": "INDETERMINATE",
+      "outcome": "HUMAN_REVIEW",
+      "confidence": "LOW",
+      "escalation": "APPLICABILITY_UNRESOLVED",
+      "missing": [
+        "places_ai_on_eu_market",
+        "risk_tier"
+      ],
+      "reasons": [
+        "APPLICABILITY_UNRESOLVED",
+        "MISSING_FACTS"
+      ]
+    },
+    {
+      "law_id": "eu_ai_act_art50",
+      "short_name": "EU AI Act Art. 50",
+      "title": "EU AI Act Article 50 Transparency Obligations",
+      "requirements": 3,
+      "applicability": "INDETERMINATE",
+      "outcome": "HUMAN_REVIEW",
+      "confidence": "LOW",
+      "escalation": "APPLICABILITY_UNRESOLVED",
+      "missing": [
+        "direct_user_interaction",
+        "synthetic_media_generation",
+        "public_interest_publication",
+        "places_ai_on_eu_market"
+      ],
+      "reasons": [
+        "APPLICABILITY_UNRESOLVED",
+        "MISSING_FACTS"
+      ]
+    },
+    {
+      "law_id": "il_hb3773",
+      "short_name": "Illinois HB 3773",
+      "title": "Illinois Human Rights Act - Artificial Intelligence in Employment",
+      "requirements": 4,
+      "applicability": "INDETERMINATE",
+      "outcome": "HUMAN_REVIEW",
+      "confidence": "LOW",
+      "escalation": "APPLICABILITY_UNRESOLVED",
+      "missing": [
+        "employer_in_il",
+        "uses_ai_in_employment_decisions"
+      ],
+      "reasons": [
+        "APPLICABILITY_UNRESOLVED",
+        "MISSING_FACTS"
+      ]
+    },
+    {
+      "law_id": "nyc_ll144",
+      "short_name": "NYC Local Law 144",
+      "title": "New York City Automated Employment Decision Tools Law",
+      "requirements": 4,
+      "applicability": "INDETERMINATE",
+      "outcome": "HUMAN_REVIEW",
+      "confidence": "LOW",
+      "escalation": "APPLICABILITY_UNRESOLVED",
+      "missing": [
+        "uses_aedt",
+        "nyc_employment_decisions"
+      ],
+      "reasons": [
+        "APPLICABILITY_UNRESOLVED",
+        "MISSING_FACTS"
+      ]
+    },
+    {
+      "law_id": "sb942",
+      "short_name": "SB 942",
+      "title": "California AI Transparency Act",
+      "requirements": 4,
+      "applicability": "INDETERMINATE",
+      "outcome": "HUMAN_REVIEW",
+      "confidence": "LOW",
+      "escalation": "APPLICABILITY_UNRESOLVED",
+      "missing": [
+        "monthly_visitors"
+      ],
+      "reasons": [
+        "APPLICABILITY_UNRESOLVED",
+        "MISSING_FACTS"
+      ]
+    },
+    {
+      "law_id": "tx_hb149",
+      "short_name": "Texas TRAIGA",
+      "title": "Texas Responsible Artificial Intelligence Governance Act",
+      "requirements": 5,
+      "applicability": "INDETERMINATE",
+      "outcome": "HUMAN_REVIEW",
+      "confidence": "LOW",
+      "escalation": "APPLICABILITY_UNRESOLVED",
+      "missing": [
+        "develops_or_deploys_ai",
+        "operates_in_tx",
+        "markets_to_tx_residents"
+      ],
+      "reasons": [
+        "APPLICABILITY_UNRESOLVED",
+        "MISSING_FACTS"
+      ]
+    },
+    {
+      "law_id": "ut_sb149",
+      "short_name": "Utah AI Policy Act",
+      "title": "Utah Artificial Intelligence Policy Act",
+      "requirements": 3,
+      "applicability": "INDETERMINATE",
+      "outcome": "HUMAN_REVIEW",
+      "confidence": "LOW",
+      "escalation": "APPLICABILITY_UNRESOLVED",
+      "missing": [
+        "uses_generative_ai_with_consumers",
+        "operates_in_ut"
+      ],
+      "reasons": [
+        "APPLICABILITY_UNRESOLVED",
+        "MISSING_FACTS"
+      ]
+    }
+  ]
+}

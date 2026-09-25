@@ -1,0 +1,2239 @@
+{
+  "bundle_sha256": "2bd41a911eae198a5406fbec79039b81577e97030ceca6c5c3619f33fa8ae350",
+  "packs": {
+    "ab2013": {
+      "applicability": {
+        "children": [
+          {
+            "fact": "develops_generative_ai_system",
+            "op": "truthy",
+            "value": null
+          },
+          {
+            "fact": "publicly_accessible_in_ca",
+            "op": "truthy",
+            "value": null
+          },
+          {
+            "fact": "genai_released_on_or_after_2022_01_01",
+            "op": "truthy",
+            "value": null
+          },
+          {
+            "children": [
+              {
+                "fact": "sole_purpose_security_aircraft_or_defense",
+                "op": "truthy",
+                "value": null
+              }
+            ],
+            "combinator": "none_of"
+          }
+        ],
+        "combinator": "all_of"
+      },
+      "citation": "Cal. Civ. Code sec. 3110 et seq. (AB 2013, 2024)",
+      "content_sha256": "4c7253c9661b0b8a310e505a5e63a6cdeca1915ea650f8d52888343e30d7faa6",
+      "effective_date": "2026-01-01",
+      "jurisdiction": "US-CA",
+      "law_id": "ab2013",
+      "metadata": {
+        "disclaimer": "Encoded for compliance-readiness analysis, not legal advice. Statutory thresholds and obligations are summarized; consult counsel and the controlling text before relying on any output.",
+        "short_name": "AB 2013"
+      },
+      "requirements": [
+        {
+          "applies_when": null,
+          "citation": "Cal. Civ. Code sec. 3111(a)",
+          "controls": [
+            {
+              "control_id": "ctl-documentation-published",
+              "description": "Publicly reachable without login, purchase, or a support request.",
+              "title": "Training-data documentation is posted on the developer's website"
+            },
+            {
+              "control_id": "ctl-documentation-per-system",
+              "description": "Coverage is per system, not per company. A developer shipping three models needs documentation covering all three.",
+              "title": "Documentation exists for every publicly available system or service"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [],
+          "description": "The developer must publish documentation of the data used to train the system on its own internet website, on or before the system is made publicly available to Californians. A description supplied privately, on request, or only to enterprise customers does not discharge the duty \u2014 the obligation is to publish.",
+          "id": "req-training-data-documentation",
+          "title": "Post training-data documentation on the developer's own website"
+        },
+        {
+          "applies_when": null,
+          "citation": "Cal. Civ. Code sec. 3111(a)",
+          "controls": [
+            {
+              "control_id": "ctl-dataset-sources-owners",
+              "description": "",
+              "title": "Sources or owners of each dataset are named"
+            },
+            {
+              "control_id": "ctl-dataset-licensing",
+              "description": "",
+              "title": "Whether datasets were purchased or licensed is stated"
+            },
+            {
+              "control_id": "ctl-collection-period",
+              "description": "",
+              "title": "Collection time period stated, with notice if collection is ongoing"
+            },
+            {
+              "control_id": "ctl-first-use-dates",
+              "description": "",
+              "title": "Dates each dataset was first used in development are stated"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [
+            "req-training-data-documentation"
+          ],
+          "description": "The documentation must identify the sources or owners of the datasets, whether the developer purchased or licensed them, the time period during which the data was collected \u2014 with notice if collection is ongoing \u2014 and the dates the datasets were first used in development.",
+          "id": "req-dataset-sources",
+          "title": "Identify where the training data came from"
+        },
+        {
+          "applies_when": null,
+          "citation": "Cal. Civ. Code sec. 3111(a)",
+          "controls": [
+            {
+              "control_id": "ctl-datapoint-count",
+              "description": "",
+              "title": "Number of data points stated, at least as a general range"
+            },
+            {
+              "control_id": "ctl-ip-protected-content",
+              "description": "",
+              "title": "Copyright, trademark, patent, or public-domain status described"
+            },
+            {
+              "control_id": "ctl-personal-information",
+              "description": "This is the disclosure most likely to be wrong by omission: scraped web corpora routinely contain personal information whether or not it was sought.",
+              "title": "Presence of personal information (sec. 1798.140) disclosed"
+            },
+            {
+              "control_id": "ctl-aggregate-consumer-information",
+              "description": "",
+              "title": "Presence of aggregate consumer information (sec. 1798.140) disclosed"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [
+            "req-training-data-documentation"
+          ],
+          "description": "The documentation must state the number of data points \u2014 general ranges are acceptable \u2014 whether the datasets include material protected by copyright, trademark, or patent or are entirely in the public domain, and whether they include personal information or aggregate consumer information as those terms are defined in Civil Code sec. 1798.140.",
+          "id": "req-dataset-composition",
+          "title": "Describe what the training data contains"
+        },
+        {
+          "applies_when": null,
+          "citation": "Cal. Civ. Code sec. 3111(a)",
+          "controls": [
+            {
+              "control_id": "ctl-purpose-description",
+              "description": "",
+              "title": "How the datasets further the system's intended purpose is described"
+            },
+            {
+              "control_id": "ctl-cleaning-and-processing",
+              "description": "",
+              "title": "Cleaning, processing, or modification described, with its purpose"
+            },
+            {
+              "control_id": "ctl-synthetic-data",
+              "description": "",
+              "title": "Use of synthetic data generation disclosed"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [
+            "req-training-data-documentation"
+          ],
+          "description": "The documentation must describe how the datasets further the intended purpose of the system, any cleaning, processing, or other modification the developer performed \u2014 including its purpose and whether it altered the structure or qualities of the data \u2014 and whether the system used or continuously uses synthetic data generation.",
+          "id": "req-dataset-processing",
+          "title": "Describe how the data was used and modified"
+        },
+        {
+          "applies_when": null,
+          "citation": "Cal. Civ. Code sec. 3110, sec. 3111(a)",
+          "controls": [
+            {
+              "control_id": "ctl-modification-trigger",
+              "description": "A named owner and a monitored trigger, not an intention to remember.",
+              "title": "Retraining or fine-tuning triggers a documentation review"
+            },
+            {
+              "control_id": "ctl-documentation-versioning",
+              "description": "",
+              "title": "Published documentation identifies the system version it covers"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [
+            "req-training-data-documentation"
+          ],
+          "description": "A new version, release, or update that materially changes functionality or performance \u2014 including the result of retraining or fine-tuning \u2014 is a substantial modification, and triggers the documentation duty again. Documentation that is accurate for a superseded version does not cover the version actually in service.",
+          "id": "req-update-on-substantial-modification",
+          "title": "Re-publish documentation when the system is substantially modified"
+        }
+      ],
+      "title": "California Generative AI Training Data Transparency Act",
+      "version": "1.0.0"
+    },
+    "cisa-sbom-2026": {
+      "applicability": {
+        "children": [
+          {
+            "fact": "ships_or_operates_software",
+            "op": "truthy",
+            "value": null
+          },
+          {
+            "children": [
+              {
+                "fact": "sells_to_us_federal_government",
+                "op": "truthy",
+                "value": null
+              },
+              {
+                "fact": "contract_requires_sbom",
+                "op": "truthy",
+                "value": null
+              },
+              {
+                "fact": "claims_supply_chain_transparency",
+                "op": "truthy",
+                "value": null
+              },
+              {
+                "fact": "in_scope_eu_cyber_resilience_act",
+                "op": "truthy",
+                "value": null
+              }
+            ],
+            "combinator": "any_of"
+          }
+        ],
+        "combinator": "all_of"
+      },
+      "citation": "CISA 2026 Minimum Elements for a Software Bill of Materials (29 July 2026); EO 14028 \u00a74(e)",
+      "content_sha256": "b4e424542dcfd8c6848ddf79159b43687eae957301da24d03804754fda6e4dbb",
+      "effective_date": "2026-07-29",
+      "jurisdiction": "US-FED-GUIDANCE",
+      "law_id": "cisa-sbom-2026",
+      "metadata": {
+        "disclaimer": "Encoded for compliance-readiness analysis, not legal advice. The 2026 Minimum Elements are joint guidance, not by themselves a private right of action. EO 14028 obligations attach through federal acquisition. Consult counsel and the controlling text before relying on any output.",
+        "short_name": "SBOM 2026"
+      },
+      "requirements": [
+        {
+          "applies_when": null,
+          "citation": "CISA 2026 Minimum Elements; EO 14028 \u00a74(e)",
+          "controls": [
+            {
+              "control_id": "ctl-sbom-document",
+              "description": "",
+              "title": "An SBOM exists in an automated format (CycloneDX or SPDX)"
+            },
+            {
+              "control_id": "ctl-sbom-per-release",
+              "description": "",
+              "title": "SBOM is generated per release, not once per company"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [],
+          "description": "An SBOM exists for each released product, service image, or significant update. A dependency screenshot or a package-lock file left in the repo is not an SBOM delivered to a buyer.",
+          "id": "req-sbom-exists",
+          "title": "Produce an SBOM for each released software item"
+        },
+        {
+          "applies_when": null,
+          "citation": "CISA 2026 Minimum Elements (data fields)",
+          "controls": [
+            {
+              "control_id": "ctl-producer-name-version",
+              "description": "",
+              "title": "Producer, name, and version are present on components"
+            },
+            {
+              "control_id": "ctl-identifiers-and-hash",
+              "description": "",
+              "title": "Component identifiers and component hash algorithm are present"
+            },
+            {
+              "control_id": "ctl-license-and-deps",
+              "description": "",
+              "title": "Component license and dependency relationships are present"
+            },
+            {
+              "control_id": "ctl-author-tool-context",
+              "description": "",
+              "title": "SBOM Author, Tool Name, Timestamp, and Generation Context are present"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [
+            "req-sbom-exists"
+          ],
+          "description": "Each component row carries the 2026 baseline, including Component Producer, Component Name, Component Version, Component Identifiers, Component Dependency Relationship, Component Hash Algorithm, Component License, SBOM Author, SBOM Tool Name, SBOM Timestamp, and SBOM Generation Context. NTIA 2021 field names alone are stale.",
+          "id": "req-sbom-minimum-fields",
+          "title": "Populate the 2026 minimum data fields"
+        },
+        {
+          "applies_when": null,
+          "citation": "CISA 2026 Minimum Elements (practices and processes)",
+          "controls": [
+            {
+              "control_id": "ctl-sbom-tool-named",
+              "description": "",
+              "title": "The generating tool is named in the SBOM"
+            },
+            {
+              "control_id": "ctl-sbom-in-release-pipeline",
+              "description": "",
+              "title": "SBOM generation is a release-pipeline step, not an after-the-fact memo"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [
+            "req-sbom-exists"
+          ],
+          "description": "Automation remains a core 2026 practice. A spreadsheet typed at release time does not scale and will drift from the binary shipped.",
+          "id": "req-sbom-automation",
+          "title": "Generate the SBOM with tooling, not by hand"
+        },
+        {
+          "applies_when": null,
+          "citation": "EO 14028 \u00a74(e); CISA 2026 Minimum Elements",
+          "controls": [
+            {
+              "control_id": "ctl-sbom-delivery-path",
+              "description": "",
+              "title": "A named path exists to deliver the SBOM to the acquirer"
+            },
+            {
+              "control_id": "ctl-sbom-no-secret-leak",
+              "description": "",
+              "title": "Shared SBOMs do not embed tokens, private keys, or unpublished vulnerability details beyond the inventory"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [
+            "req-sbom-exists"
+          ],
+          "description": "Federal and contractual SBOM duties are about delivery, not only internal inventory. An SBOM that never leaves the build server does not discharge a sharing obligation.",
+          "id": "req-sbom-share",
+          "title": "Be able to share the SBOM with the acquirer"
+        },
+        {
+          "applies_when": null,
+          "citation": "CISA 2026 Minimum Elements",
+          "controls": [
+            {
+              "control_id": "ctl-sbom-matches-build",
+              "description": "",
+              "title": "SBOM timestamp and component set match the shipped build"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [
+            "req-sbom-exists"
+          ],
+          "description": "A new dependency, a patched transitive library, or a rebuilt container is a new composition. The SBOM that described the previous build does not describe the build in service.",
+          "id": "req-sbom-refresh",
+          "title": "Refresh the SBOM when the composition changes"
+        }
+      ],
+      "title": "Software Bill of Materials (CISA 2026 Minimum Elements)",
+      "version": "1.0.0"
+    },
+    "co_sb24_205": {
+      "applicability": {
+        "children": [
+          {
+            "fact": "does_business_in_co",
+            "op": "truthy",
+            "value": null
+          },
+          {
+            "fact": "high_risk_ai_system",
+            "op": "truthy",
+            "value": null
+          },
+          {
+            "children": [
+              {
+                "fact": "role",
+                "op": "in",
+                "value": [
+                  "developer",
+                  "deployer",
+                  "both"
+                ]
+              }
+            ],
+            "combinator": "any_of"
+          }
+        ],
+        "combinator": "all_of"
+      },
+      "citation": "Colo. Rev. Stat. sec. 6-1-1701 et seq. (SB 24-205)",
+      "content_sha256": "7f41657619658ef12b14d75191640ee024cdabc2bc1d1d6d44792d9ff9521456",
+      "effective_date": "2026-06-30",
+      "jurisdiction": "US-CO",
+      "law_id": "co_sb24_205",
+      "metadata": {
+        "disclaimer": "Encoded for compliance-readiness analysis, not legal advice.",
+        "short_name": "Colorado AI Act"
+      },
+      "requirements": [
+        {
+          "applies_when": null,
+          "citation": "C.R.S. sec. 6-1-1702(1), 6-1-1703(1)",
+          "controls": [
+            {
+              "control_id": "ctl-discrimination-testing",
+              "description": "",
+              "title": "Documented testing for disparate impact across protected classes"
+            },
+            {
+              "control_id": "ctl-risk-documentation",
+              "description": "",
+              "title": "Known and foreseeable discrimination risks documented"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [],
+          "description": "Developers and deployers must use reasonable care to protect consumers from any known or reasonably foreseeable risk of algorithmic discrimination arising from intended and contracted uses.",
+          "id": "req-reasonable-care",
+          "title": "Exercise reasonable care against algorithmic discrimination"
+        },
+        {
+          "applies_when": {
+            "fact": "role",
+            "op": "in",
+            "value": [
+              "deployer",
+              "both"
+            ]
+          },
+          "citation": "C.R.S. sec. 6-1-1703(2)",
+          "controls": [
+            {
+              "control_id": "ctl-rmf-program",
+              "description": "",
+              "title": "Written risk management program mapped to a recognized framework"
+            },
+            {
+              "control_id": "ctl-program-review",
+              "description": "",
+              "title": "Program reviewed and updated on a defined cadence"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [],
+          "description": "Deployers must implement a risk management policy and program governing high-risk systems, iteratively reviewed and aligned to a recognized framework such as NIST AI RMF or ISO/IEC 42001.",
+          "id": "req-risk-management-program",
+          "title": "Maintain an AI risk management program"
+        },
+        {
+          "applies_when": {
+            "fact": "role",
+            "op": "in",
+            "value": [
+              "deployer",
+              "both"
+            ]
+          },
+          "citation": "C.R.S. sec. 6-1-1703(3)",
+          "controls": [
+            {
+              "control_id": "ctl-impact-assessment-current",
+              "description": "",
+              "title": "Impact assessment completed within the last 12 months"
+            },
+            {
+              "control_id": "ctl-assessment-retention",
+              "description": "",
+              "title": "Assessments retained for at least three years"
+            }
+          ],
+          "deadline_days": 90,
+          "depends_on": [
+            "req-risk-management-program"
+          ],
+          "description": "Deployers must complete an impact assessment annually and within 90 days of any intentional and substantial modification, covering purpose, known risks, data categories, metrics, transparency, and post-deployment monitoring.",
+          "id": "req-impact-assessment",
+          "title": "Complete annual impact assessments"
+        },
+        {
+          "applies_when": {
+            "fact": "role",
+            "op": "in",
+            "value": [
+              "developer",
+              "both"
+            ]
+          },
+          "citation": "C.R.S. sec. 6-1-1702(2)-(3)",
+          "controls": [
+            {
+              "control_id": "ctl-model-documentation",
+              "description": "",
+              "title": "Documentation package supplied to every deployer"
+            },
+            {
+              "control_id": "ctl-public-statement",
+              "description": "",
+              "title": "Public statement summarizing high-risk systems and risk management"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [],
+          "description": "Developers must give deployers the information needed to complete an impact assessment: intended uses, known limitations, training data summary, evaluation and mitigation measures, and appropriate use guidance.",
+          "id": "req-developer-documentation",
+          "title": "Provide documentation to deployers"
+        },
+        {
+          "applies_when": {
+            "fact": "role",
+            "op": "in",
+            "value": [
+              "deployer",
+              "both"
+            ]
+          },
+          "citation": "C.R.S. sec. 6-1-1703(4)-(5)",
+          "controls": [
+            {
+              "control_id": "ctl-pre-decision-notice",
+              "description": "",
+              "title": "Notice delivered before the consequential decision"
+            },
+            {
+              "control_id": "ctl-notice-plain-language",
+              "description": "",
+              "title": "Notice is in plain language and accessible"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [],
+          "description": "Deployers must notify a consumer before a high-risk system makes, or is a substantial factor in making, a consequential decision, and disclose the purpose and nature of the decision.",
+          "id": "req-consumer-notice",
+          "title": "Notify consumers of high-risk AI use"
+        },
+        {
+          "applies_when": {
+            "fact": "role",
+            "op": "in",
+            "value": [
+              "deployer",
+              "both"
+            ]
+          },
+          "citation": "C.R.S. sec. 6-1-1703(4)(b)",
+          "controls": [
+            {
+              "control_id": "ctl-adverse-reasons",
+              "description": "",
+              "title": "Principal reasons disclosed on adverse decisions"
+            },
+            {
+              "control_id": "ctl-data-correction",
+              "description": "",
+              "title": "Mechanism to correct inaccurate personal data"
+            },
+            {
+              "control_id": "ctl-human-appeal",
+              "description": "",
+              "title": "Human review appeal path available"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [
+            "req-consumer-notice"
+          ],
+          "description": "On an adverse consequential decision, the deployer must state the principal reasons, the data used and its source, and provide an opportunity to correct data and to appeal for human review where technically feasible.",
+          "id": "req-adverse-decision-explanation",
+          "title": "Explain adverse decisions and offer correction and appeal"
+        },
+        {
+          "applies_when": null,
+          "citation": "C.R.S. sec. 6-1-1703(7)",
+          "controls": [
+            {
+              "control_id": "ctl-discrimination-detection",
+              "description": "",
+              "title": "Monitoring capable of detecting algorithmic discrimination"
+            },
+            {
+              "control_id": "ctl-ag-notification-process",
+              "description": "",
+              "title": "Documented 90-day AG notification procedure"
+            }
+          ],
+          "deadline_days": 90,
+          "depends_on": [],
+          "description": "On discovering that a high-risk system has caused algorithmic discrimination, the deployer must notify the Colorado Attorney General within 90 days.",
+          "id": "req-ag-notification",
+          "title": "Notify the Attorney General of discovered algorithmic discrimination"
+        }
+      ],
+      "title": "Colorado Artificial Intelligence Act",
+      "version": "1.0.0"
+    },
+    "cyclonedx-cbom-1.6": {
+      "applicability": {
+        "children": [
+          {
+            "fact": "ships_or_operates_software",
+            "op": "truthy",
+            "value": null
+          },
+          {
+            "children": [
+              {
+                "fact": "implements_cryptography",
+                "op": "truthy",
+                "value": null
+              },
+              {
+                "fact": "consumes_cryptographic_libraries",
+                "op": "truthy",
+                "value": null
+              },
+              {
+                "fact": "terminates_tls_or_issues_certificates",
+                "op": "truthy",
+                "value": null
+              },
+              {
+                "fact": "claims_pqc_or_quantum_safe",
+                "op": "truthy",
+                "value": null
+              }
+            ],
+            "combinator": "any_of"
+          }
+        ],
+        "combinator": "all_of"
+      },
+      "citation": "OWASP CycloneDX 1.6 cryptographic-asset model (ECMA-424); NIST PQC inventory guidance",
+      "content_sha256": "5c2de75d2581affe7ff92b369e8d7b360213def55d04334fd3393fd254069642",
+      "effective_date": "2024-04-09",
+      "jurisdiction": "INDUSTRY-STANDARD",
+      "law_id": "cyclonedx-cbom-1.6",
+      "metadata": {
+        "disclaimer": "Encoded for compliance-readiness analysis, not legal advice. CycloneDX 1.6 / ECMA-424 is an industry specification. NSM-10, NIST IR guidance, and buyer contracts may incorporate it; this pack does not invent a standalone federal CBOM statute. Consult counsel and the controlling text before relying on any output.",
+        "short_name": "QBOM / CBOM 1.6"
+      },
+      "requirements": [
+        {
+          "applies_when": null,
+          "citation": "CycloneDX 1.6 \u00a7 cryptographic-asset; OWASP Authoritative Guide to CBOM",
+          "controls": [
+            {
+              "control_id": "ctl-cbom-document",
+              "description": "bomFormat is CycloneDX. specVersion is 1.6 or higher.",
+              "title": "A CycloneDX document with specVersion 1.6 or later exists"
+            },
+            {
+              "control_id": "ctl-cbom-per-system",
+              "description": "Coverage is per system, not one company-wide PDF.",
+              "title": "One CBOM (or clearly scoped component set) per released system"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [],
+          "description": "A Cryptographic Bill of Materials exists for each released application, service, or firmware image that implements or consumes cryptography. A prose security whitepaper or a screenshot of OpenSSL version is not a CBOM.",
+          "id": "req-cbom-exists",
+          "title": "Produce a CBOM for each released system"
+        },
+        {
+          "applies_when": null,
+          "citation": "CycloneDX 1.6 cryptoProperties.assetType",
+          "controls": [
+            {
+              "control_id": "ctl-algorithms-listed",
+              "description": "",
+              "title": "Algorithms in use are listed with primitive and parameter set"
+            },
+            {
+              "control_id": "ctl-protocols-listed",
+              "description": "",
+              "title": "Protocols in use (TLS, IPsec, SSH, etc.) are listed with version"
+            },
+            {
+              "control_id": "ctl-certs-and-material",
+              "description": "Private key values are not written into the CBOM. State, format, and algorithmRef are enough.",
+              "title": "Certificates and related material are inventoried without embedding secrets"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [
+            "req-cbom-exists"
+          ],
+          "description": "Components of type cryptographic-asset declare assetType as algorithm, certificate, protocol, or related-crypto-material. Hardcoded algorithms and library-provided algorithms are both in scope.",
+          "id": "req-cbom-asset-types",
+          "title": "Inventory cryptographic asset types"
+        },
+        {
+          "applies_when": null,
+          "citation": "CycloneDX 1.6 algorithmProperties.nistQuantumSecurityLevel; NIST PQC security categories",
+          "controls": [
+            {
+              "control_id": "ctl-nist-qsl-present",
+              "description": "",
+              "title": "nistQuantumSecurityLevel is present on algorithm assets"
+            },
+            {
+              "control_id": "ctl-no-false-pqc",
+              "description": "ML-KEM / ML-DSA / SLH-DSA may carry levels 1\u20135. RSA and ECDH do not.",
+              "title": "Classical public-key algorithms are not marked as PQC"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [
+            "req-cbom-asset-types"
+          ],
+          "description": "Each algorithm component states classicalSecurityLevel where known and nistQuantumSecurityLevel (0\u20135). Level 0 means the category is not met. RSA-2048 and ECDSA P-256 must not be labeled as meeting a NIST PQC category.",
+          "id": "req-cbom-quantum-levels",
+          "title": "Record NIST quantum and classical security levels"
+        },
+        {
+          "applies_when": null,
+          "citation": "CycloneDX 1.6 dependencies / provides",
+          "controls": [
+            {
+              "control_id": "ctl-uses-or-provides",
+              "description": "",
+              "title": "Dependency edges exist between components and cryptographic-assets"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [
+            "req-cbom-exists"
+          ],
+          "description": "The CBOM records which application or library uses or provides each cryptographic asset. An algorithm listed with no parent component is an incomplete inventory.",
+          "id": "req-cbom-dependencies",
+          "title": "Relate software components to the crypto they use or provide"
+        },
+        {
+          "applies_when": null,
+          "citation": "OWASP Authoritative Guide to CBOM; NIST crypto-agility practice",
+          "controls": [
+            {
+              "control_id": "ctl-cbom-timestamp",
+              "description": "",
+              "title": "metadata.timestamp reflects the generation event"
+            },
+            {
+              "control_id": "ctl-cbom-trigger",
+              "description": "",
+              "title": "Named owner regenerates CBOM on crypto or dependency change"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [
+            "req-cbom-exists"
+          ],
+          "description": "A new library, a TLS configuration change, a certificate rotation that changes the algorithm, or a PQC hybrid rollout is a CBOM event. A CBOM dated before the last crypto change does not cover the system in service.",
+          "id": "req-cbom-refresh",
+          "title": "Regenerate the CBOM when cryptography changes"
+        }
+      ],
+      "title": "Cryptographic Bill of Materials (CycloneDX 1.6 CBOM)",
+      "version": "1.0.0"
+    },
+    "cyclonedx-cbom-sbom": {
+      "applicability": {
+        "children": [
+          {
+            "fact": "ships_or_operates_software",
+            "op": "truthy",
+            "value": null
+          },
+          {
+            "children": [
+              {
+                "fact": "implements_cryptography",
+                "op": "truthy",
+                "value": null
+              },
+              {
+                "fact": "consumes_cryptographic_libraries",
+                "op": "truthy",
+                "value": null
+              },
+              {
+                "fact": "claims_pqc_or_quantum_safe",
+                "op": "truthy",
+                "value": null
+              },
+              {
+                "fact": "claims_supply_chain_transparency",
+                "op": "truthy",
+                "value": null
+              },
+              {
+                "fact": "sells_to_us_federal_government",
+                "op": "truthy",
+                "value": null
+              },
+              {
+                "fact": "contract_requires_sbom",
+                "op": "truthy",
+                "value": null
+              }
+            ],
+            "combinator": "any_of"
+          }
+        ],
+        "combinator": "all_of"
+      },
+      "citation": "CISA 2026 Minimum Elements for an SBOM (29 July 2026); EO 14028 \u00a74(e); OWASP CycloneDX 1.6 CBOM (ECMA-424)",
+      "content_sha256": "4db8699f623074904b952ecc558dd3f532c1ec37f95950197e9e923335e26087",
+      "effective_date": "2026-07-29",
+      "jurisdiction": "INDUSTRY-STANDARD",
+      "law_id": "cyclonedx-cbom-sbom",
+      "metadata": {
+        "disclaimer": "Encoded for compliance-readiness analysis, not legal advice. SBOM and CBOM obligations arise from guidance, contracts, and (for some sellers) EO 14028 procurement \u2014 not from a single combined statute. Consult counsel and the controlling text before relying on any output.",
+        "short_name": "SBOM+QBOM"
+      },
+      "requirements": [
+        {
+          "applies_when": null,
+          "citation": "CISA 2026 Minimum Elements; CycloneDX 1.6 cryptographic-asset",
+          "controls": [
+            {
+              "control_id": "ctl-sbom-present",
+              "description": "",
+              "title": "An SBOM in CycloneDX or SPDX exists for the release"
+            },
+            {
+              "control_id": "ctl-cbom-present",
+              "description": "",
+              "title": "A CBOM in CycloneDX 1.6 or later exists for the same release"
+            },
+            {
+              "control_id": "ctl-same-release-scope",
+              "description": "",
+              "title": "SBOM and CBOM describe the same shipped version"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [],
+          "description": "The released system has a Software Bill of Materials and a Cryptographic Bill of Materials. One CycloneDX 1.6 document may contain both software components and cryptographic-asset components. Two files are acceptable if they share a release identifier. An SBOM alone, or a CBOM alone, fails this requirement.",
+          "id": "req-both-boms-exist",
+          "title": "Produce both an SBOM and a CBOM for the released system"
+        },
+        {
+          "applies_when": null,
+          "citation": "CISA 2026 Minimum Elements (data fields)",
+          "controls": [
+            {
+              "control_id": "ctl-sbom-fields",
+              "description": "",
+              "title": "2026 minimum SBOM fields are populated"
+            },
+            {
+              "control_id": "ctl-sbom-automated",
+              "description": "",
+              "title": "SBOM is generated in the release pipeline"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [
+            "req-both-boms-exist"
+          ],
+          "description": "Component Producer, Component Name, Component Version, Component Identifiers, dependency relationships, hash algorithm, license, SBOM Author, Tool Name, Timestamp, and Generation Context are present.",
+          "id": "req-sbom-minimum-fields",
+          "title": "SBOM meets CISA 2026 minimum fields"
+        },
+        {
+          "applies_when": null,
+          "citation": "CycloneDX 1.6 cryptoProperties; NIST PQC security categories",
+          "controls": [
+            {
+              "control_id": "ctl-cbom-asset-types",
+              "description": "",
+              "title": "Algorithms, protocols, and certificates are inventoried"
+            },
+            {
+              "control_id": "ctl-nist-qsl",
+              "description": "",
+              "title": "nistQuantumSecurityLevel is present on algorithm assets"
+            },
+            {
+              "control_id": "ctl-no-false-pqc",
+              "description": "",
+              "title": "RSA / ECDSA / ECDH are not marked as PQC"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [
+            "req-both-boms-exist"
+          ],
+          "description": "Algorithms, protocols, and certificates are listed. Algorithm assets carry nistQuantumSecurityLevel. Classical public-key algorithms are not labeled as meeting a PQC category.",
+          "id": "req-cbom-assets-and-levels",
+          "title": "CBOM inventories crypto assets with NIST quantum levels"
+        },
+        {
+          "applies_when": null,
+          "citation": "CycloneDX 1.6 dependencies / provides",
+          "controls": [
+            {
+              "control_id": "ctl-crypto-to-component",
+              "description": "",
+              "title": "Dependency edges link cryptographic-assets to software components"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [
+            "req-sbom-minimum-fields",
+            "req-cbom-assets-and-levels"
+          ],
+          "description": "Every cryptographic-asset points at the SBOM component that provides or uses it (for example liboqs provides ML-KEM-768; nginx uses TLS 1.3). An orphan algorithm with no parent library is an incomplete joint BOM.",
+          "id": "req-crosswalk",
+          "title": "Tie cryptographic assets to the software that implements them"
+        },
+        {
+          "applies_when": null,
+          "citation": "CycloneDX related-crypto-material practice; CISA SBOM sharing",
+          "controls": [
+            {
+              "control_id": "ctl-no-key-material",
+              "description": "",
+              "title": "Private keys and tokens are absent from shared SBOM and CBOM files"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [
+            "req-both-boms-exist"
+          ],
+          "description": "Private keys, tokens, and raw secret values stay off the BOM. related-crypto-material records type, state, and algorithmRef only.",
+          "id": "req-no-secret-material",
+          "title": "Shared BOMs do not embed secrets"
+        },
+        {
+          "applies_when": null,
+          "citation": "CISA 2026 Minimum Elements; OWASP Authoritative Guide to CBOM",
+          "controls": [
+            {
+              "control_id": "ctl-paired-timestamp",
+              "description": "",
+              "title": "SBOM and CBOM timestamps belong to the same release"
+            },
+            {
+              "control_id": "ctl-named-owner",
+              "description": "",
+              "title": "A named owner regenerates both documents on change"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [
+            "req-both-boms-exist"
+          ],
+          "description": "A new dependency is an SBOM event. A new cipher suite or PQC hybrid is a CBOM event. Either event refreshes the joint release pair so the two documents do not describe different builds.",
+          "id": "req-joint-refresh",
+          "title": "Regenerate both BOMs when composition or cryptography changes"
+        }
+      ],
+      "title": "Software and Cryptographic Bills of Materials (SBOM + CBOM)",
+      "version": "1.0.0"
+    },
+    "deployment_controls": {
+      "applicability": {
+        "children": [
+          {
+            "fact": "high_impact_autonomous_deployment",
+            "op": "truthy",
+            "value": null
+          },
+          {
+            "fact": "training_flops_above_1e26",
+            "op": "truthy",
+            "value": null
+          },
+          {
+            "fact": "cross_border_personal_data_transfer",
+            "op": "truthy",
+            "value": null
+          },
+          {
+            "fact": "government_or_defense_workload",
+            "op": "truthy",
+            "value": null
+          }
+        ],
+        "combinator": "any_of"
+      },
+      "citation": "Operational safety controls aligned with frontier-model and public-sector deployment practice",
+      "content_sha256": "98bff8b0391012c03991c8ddeca613108f52e5c29f31f664ecf9b6bea894e91b",
+      "effective_date": "2026-01-01",
+      "jurisdiction": "MULTI",
+      "law_id": "deployment_controls",
+      "metadata": {
+        "disclaimer": "Encoded for compliance-readiness analysis, not legal advice. These controls aggregate multi-regime operational expectations; they are not a substitute for jurisdiction-specific counsel.",
+        "short_name": "Deployment Controls"
+      },
+      "requirements": [
+        {
+          "applies_when": {
+            "fact": "high_impact_autonomous_deployment",
+            "op": "truthy",
+            "value": null
+          },
+          "citation": "Operational deployment boundary (hardening TC-29/TC-30)",
+          "controls": [
+            {
+              "control_id": "ctl-safety-circuit-breaker",
+              "description": "",
+              "title": "Active safety circuit breaker present in production path"
+            },
+            {
+              "control_id": "ctl-human-fallback-endpoint",
+              "description": "",
+              "title": "Documented human fallback / override endpoint"
+            },
+            {
+              "control_id": "ctl-human-override-available",
+              "description": "",
+              "title": "Human override is available for high-impact actions"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [],
+          "description": "Systems that can execute high-impact actions autonomously in production must expose an active safety circuit breaker and a reachable human fallback endpoint so operators can interrupt or reverse automated effects.",
+          "id": "req-deployment-circuit-breaker",
+          "title": "High-impact autonomous systems retain human override and fallback"
+        },
+        {
+          "applies_when": {
+            "fact": "training_flops_above_1e26",
+            "op": "truthy",
+            "value": null
+          },
+          "citation": "Systemic compute threshold (hardening TC-31/TC-32)",
+          "controls": [
+            {
+              "control_id": "ctl-third-party-redteam-completed",
+              "description": "",
+              "title": "Third-party red-team evaluation completed"
+            },
+            {
+              "control_id": "ctl-redteam-report-available",
+              "description": "",
+              "title": "Red-team safety evaluation report retained and available"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [],
+          "description": "Training compute at or above 10^26 FLOPs triggers an expectation of completed third-party red-teaming with a retained safety evaluation report before broad deployment.",
+          "id": "req-systemic-redteam-report",
+          "title": "Models above 10^26 FLOPs carry third-party red-team safety evaluation"
+        },
+        {
+          "applies_when": {
+            "fact": "cross_border_personal_data_transfer",
+            "op": "truthy",
+            "value": null
+          },
+          "citation": "Cross-border transfer control (hardening TC-33/TC-34)",
+          "controls": [
+            {
+              "control_id": "ctl-transfer-adequacy-or-scc-bcr",
+              "description": "",
+              "title": "Adequacy mechanism or SCC/BCR documented for the transfer path"
+            },
+            {
+              "control_id": "ctl-transfer-encryption-in-transit",
+              "description": "",
+              "title": "Personal data encrypted in transit on the transfer path"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [],
+          "description": "Personal data routed across jurisdictions must rely on an adequacy mechanism (e.g. EU-US Data Privacy Framework), standard contractual clauses or binding corporate rules, and encryption in transit. Unencrypted transfers into non-adequate jurisdictions without SCCs/BCRs fail this control.",
+          "id": "req-cross-border-transfer-safeguards",
+          "title": "Personal data transfers use adequacy, SCCs/BCRs, and encryption in transit"
+        },
+        {
+          "applies_when": {
+            "fact": "government_or_defense_workload",
+            "op": "truthy",
+            "value": null
+          },
+          "citation": "Sovereign compute anchor (hardening TC-35/TC-36)",
+          "controls": [
+            {
+              "control_id": "ctl-air-gapped-sovereign-cluster",
+              "description": "",
+              "title": "Workload isolated on an air-gapped sovereign compute cluster"
+            },
+            {
+              "control_id": "ctl-no-public-multi-tenant",
+              "description": "",
+              "title": "Workload is not executed on shared multi-tenant public clusters"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [],
+          "description": "Restricted public-sector and defense inference workloads must execute on air-gapped sovereign clusters, not shared multi-tenant public cloud tenancy.",
+          "id": "req-sovereign-compute-isolation",
+          "title": "Government and defense workloads run on air-gapped sovereign compute"
+        }
+      ],
+      "title": "Operational Deployment, Compute Threshold, and Sovereign Compute Controls",
+      "version": "1.0.0"
+    },
+    "eo_14412": {
+      "applicability": {
+        "children": [
+          {
+            "fact": "system_tier_high_value_asset",
+            "op": "truthy",
+            "value": null
+          },
+          {
+            "fact": "system_tier_federal_covered",
+            "op": "truthy",
+            "value": null
+          },
+          {
+            "fact": "federal_covered_system",
+            "op": "truthy",
+            "value": null
+          }
+        ],
+        "combinator": "any_of"
+      },
+      "citation": "Executive Order 14412 (June 22, 2026)",
+      "content_sha256": "21459bfc76c2bfaf65fb50168c17d7e0464d85004bcdfb1170337f77b4ae561d",
+      "effective_date": "2026-06-22",
+      "jurisdiction": "US_FEDERAL",
+      "law_id": "eo_14412",
+      "metadata": {
+        "disclaimer": "Encoded for compliance-readiness analysis, not legal advice. Consult the controlling Executive Order text before relying on any output.",
+        "short_name": "EO 14412"
+      },
+      "requirements": [
+        {
+          "applies_when": {
+            "children": [
+              {
+                "fact": "system_tier_high_value_asset",
+                "op": "truthy",
+                "value": null
+              },
+              {
+                "fact": "system_tier_federal_covered",
+                "op": "truthy",
+                "value": null
+              },
+              {
+                "fact": "federal_covered_system",
+                "op": "truthy",
+                "value": null
+              }
+            ],
+            "combinator": "any_of"
+          },
+          "citation": "EO 14412 \u00a72(a)",
+          "controls": [
+            {
+              "control_id": "PQC_KEM_COMPLIANCE",
+              "description": "Flag EO14412_NON_COMPLIANT_KEY_EXCHANGE when key_exchange_algorithm is not in ML-KEM-768, ML-KEM-1024, HYBRID_ECDH_MLKEM.",
+              "title": "Key exchange is ML-KEM-768, ML-KEM-1024, or approved hybrid"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [],
+          "description": "Covered agency systems must transition all public-key encryption and key-establishment mechanisms to NIST FIPS 203 (ML-KEM) or approved hybrid mechanisms by December 31, 2030.",
+          "id": "EO14412_SEC2_PQC_KEY_ESTABLISHMENT",
+          "title": "2030 Key Establishment Transition Mandate"
+        },
+        {
+          "applies_when": {
+            "children": [
+              {
+                "fact": "system_tier_high_value_asset",
+                "op": "truthy",
+                "value": null
+              },
+              {
+                "fact": "system_tier_federal_covered",
+                "op": "truthy",
+                "value": null
+              },
+              {
+                "fact": "federal_covered_system",
+                "op": "truthy",
+                "value": null
+              }
+            ],
+            "combinator": "any_of"
+          },
+          "citation": "EO 14412 \u00a72(b)",
+          "controls": [
+            {
+              "control_id": "PQC_SIG_COMPLIANCE",
+              "description": "Flag EO14412_NON_COMPLIANT_SIGNATURE_SCHEME when signature_algorithm is not in ML-DSA-65, ML-DSA-87, SLH-DSA-SHA2-128s.",
+              "title": "Signatures are ML-DSA-65, ML-DSA-87, or SLH-DSA-SHA2-128s"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [],
+          "description": "Covered agency systems must transition all authentication, digital signatures, and code-signing mechanisms to NIST FIPS 204 (ML-DSA) or NIST FIPS 205 (SLH-DSA) by December 31, 2031.",
+          "id": "EO14412_SEC2_PQC_DIGITAL_SIGNATURE",
+          "title": "2031 Digital Signature Transition Mandate"
+        }
+      ],
+      "title": "Securing the Nation Against Advanced Cryptographic Attacks",
+      "version": "2026.06"
+    },
+    "eu_ai_act": {
+      "applicability": {
+        "children": [
+          {
+            "fact": "places_ai_on_eu_market",
+            "op": "truthy",
+            "value": null
+          },
+          {
+            "fact": "risk_tier",
+            "op": "in",
+            "value": [
+              "prohibited",
+              "high",
+              "limited",
+              "minimal",
+              "gpai"
+            ]
+          }
+        ],
+        "combinator": "all_of"
+      },
+      "citation": "Regulation (EU) 2024/1689",
+      "content_sha256": "025bce064ff4ca983aa10b1bc1a618f136cc1f7fc6252a0980e3a74c5f9df713",
+      "effective_date": "2026-08-02",
+      "jurisdiction": "EU",
+      "law_id": "eu_ai_act",
+      "metadata": {
+        "disclaimer": "Encoded for compliance-readiness analysis, not legal advice. Obligations phase in on different dates by risk tier.",
+        "short_name": "EU AI Act"
+      },
+      "requirements": [
+        {
+          "applies_when": null,
+          "citation": "Art. 5",
+          "controls": [
+            {
+              "control_id": "ctl-prohibited-use-screening",
+              "description": "",
+              "title": "Documented screening of use cases against the Article 5 list"
+            },
+            {
+              "control_id": "ctl-prohibited-attestation",
+              "description": "",
+              "title": "Attestation that no prohibited practice is in operation"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [],
+          "description": "Social scoring, exploitative manipulation of vulnerabilities, untargeted facial-image scraping, emotion inference in workplaces and schools, and real-time remote biometric identification in public for law enforcement outside narrow exceptions are prohibited outright.",
+          "id": "req-prohibited-practices",
+          "title": "Do not deploy prohibited AI practices"
+        },
+        {
+          "applies_when": {
+            "fact": "risk_tier",
+            "op": "eq",
+            "value": "high"
+          },
+          "citation": "Art. 9",
+          "controls": [
+            {
+              "control_id": "ctl-lifecycle-risk-system",
+              "description": "",
+              "title": "Documented lifecycle risk management system"
+            },
+            {
+              "control_id": "ctl-residual-risk-judgement",
+              "description": "",
+              "title": "Residual risks evaluated and judged acceptable"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [],
+          "description": "A continuous, iterative risk management system running across the entire lifecycle of the high-risk system, with identification, estimation, evaluation, and mitigation of foreseeable risks.",
+          "id": "req-risk-management-system",
+          "title": "Operate a risk management system for high-risk AI"
+        },
+        {
+          "applies_when": {
+            "fact": "risk_tier",
+            "op": "eq",
+            "value": "high"
+          },
+          "citation": "Art. 10",
+          "controls": [
+            {
+              "control_id": "ctl-dataset-governance",
+              "description": "",
+              "title": "Documented dataset provenance and governance"
+            },
+            {
+              "control_id": "ctl-bias-examination",
+              "description": "",
+              "title": "Datasets examined for bias with findings recorded"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [],
+          "description": "Training, validation, and testing data must meet quality criteria and be examined for possible biases likely to affect health, safety, or fundamental rights.",
+          "id": "req-data-governance",
+          "title": "Apply data and data-governance practices"
+        },
+        {
+          "applies_when": {
+            "fact": "risk_tier",
+            "op": "eq",
+            "value": "high"
+          },
+          "citation": "Art. 11 and Annex IV",
+          "controls": [
+            {
+              "control_id": "ctl-annex-iv-documentation",
+              "description": "",
+              "title": "Technical documentation covering Annex IV elements"
+            },
+            {
+              "control_id": "ctl-documentation-current",
+              "description": "",
+              "title": "Documentation kept up to date through modifications"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [
+            "req-risk-management-system"
+          ],
+          "description": "",
+          "id": "req-technical-documentation",
+          "title": "Draw up and maintain technical documentation"
+        },
+        {
+          "applies_when": {
+            "fact": "risk_tier",
+            "op": "eq",
+            "value": "high"
+          },
+          "citation": "Art. 12",
+          "controls": [
+            {
+              "control_id": "ctl-automatic-logs",
+              "description": "",
+              "title": "Automatic event logging enabled"
+            },
+            {
+              "control_id": "ctl-log-retention",
+              "description": "",
+              "title": "Logs retained for an appropriate period"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [],
+          "description": "",
+          "id": "req-record-keeping",
+          "title": "Enable automatic logging over the system lifetime"
+        },
+        {
+          "applies_when": {
+            "fact": "risk_tier",
+            "op": "eq",
+            "value": "high"
+          },
+          "citation": "Art. 14",
+          "controls": [
+            {
+              "control_id": "ctl-oversight-measures",
+              "description": "",
+              "title": "Oversight measures built into the system design"
+            },
+            {
+              "control_id": "ctl-oversight-competence",
+              "description": "",
+              "title": "Assigned overseers are competent and authorized to intervene"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [],
+          "description": "",
+          "id": "req-human-oversight",
+          "title": "Design for effective human oversight"
+        },
+        {
+          "applies_when": {
+            "fact": "risk_tier",
+            "op": "eq",
+            "value": "high"
+          },
+          "citation": "Art. 15",
+          "controls": [
+            {
+              "control_id": "ctl-performance-metrics",
+              "description": "",
+              "title": "Accuracy metrics declared and tested"
+            },
+            {
+              "control_id": "ctl-adversarial-resilience",
+              "description": "",
+              "title": "Resilience against adversarial manipulation tested"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [],
+          "description": "",
+          "id": "req-accuracy-robustness-security",
+          "title": "Achieve appropriate accuracy, robustness, and cybersecurity"
+        },
+        {
+          "applies_when": {
+            "fact": "risk_tier",
+            "op": "eq",
+            "value": "high"
+          },
+          "citation": "Arts. 43, 47, 49",
+          "controls": [
+            {
+              "control_id": "ctl-conformity-assessment",
+              "description": "",
+              "title": "Conformity assessment procedure completed"
+            },
+            {
+              "control_id": "ctl-eu-declaration",
+              "description": "",
+              "title": "EU declaration of conformity drawn up and CE marking affixed"
+            },
+            {
+              "control_id": "ctl-eu-database-registration",
+              "description": "",
+              "title": "System registered in the EU database"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [
+            "req-technical-documentation",
+            "req-human-oversight"
+          ],
+          "description": "",
+          "id": "req-conformity-assessment",
+          "title": "Complete conformity assessment and registration"
+        },
+        {
+          "applies_when": {
+            "fact": "risk_tier",
+            "op": "in",
+            "value": [
+              "limited",
+              "high",
+              "gpai"
+            ]
+          },
+          "citation": "Art. 50",
+          "controls": [
+            {
+              "control_id": "ctl-ai-interaction-notice",
+              "description": "",
+              "title": "Users informed they are interacting with an AI system"
+            },
+            {
+              "control_id": "ctl-synthetic-content-marking",
+              "description": "",
+              "title": "Synthetic output marked in a machine-readable format"
+            },
+            {
+              "control_id": "ctl-deepfake-labelling",
+              "description": "",
+              "title": "Deep fakes disclosed as artificially generated"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [],
+          "description": "Users must be informed they are interacting with an AI system; synthetic audio, image, video, and text must be marked in a machine-readable format; deep fakes and AI-generated public-interest text must be labelled.",
+          "id": "req-transparency-disclosure",
+          "title": "Disclose AI interaction and mark synthetic content"
+        },
+        {
+          "applies_when": {
+            "fact": "risk_tier",
+            "op": "eq",
+            "value": "gpai"
+          },
+          "citation": "Arts. 53, 55",
+          "controls": [
+            {
+              "control_id": "ctl-gpai-documentation",
+              "description": "",
+              "title": "Model documentation maintained and shared downstream"
+            },
+            {
+              "control_id": "ctl-copyright-policy",
+              "description": "",
+              "title": "Policy to comply with EU copyright and TDM reservations"
+            },
+            {
+              "control_id": "ctl-training-data-summary",
+              "description": "",
+              "title": "Sufficiently detailed public summary of training content"
+            },
+            {
+              "control_id": "ctl-systemic-risk-evaluation",
+              "description": "",
+              "title": "Adversarial evaluation and incident reporting for systemic risk"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [],
+          "description": "Providers of GPAI models must maintain technical documentation, provide information to downstream providers, implement a copyright policy, and publish a sufficiently detailed training-content summary. Models with systemic risk carry additional evaluation and incident duties.",
+          "id": "req-gpai-obligations",
+          "title": "Meet general-purpose AI model obligations"
+        }
+      ],
+      "title": "EU Artificial Intelligence Act",
+      "version": "1.0.0"
+    },
+    "eu_ai_act_art50": {
+      "applicability": {
+        "children": [
+          {
+            "fact": "direct_user_interaction",
+            "op": "truthy",
+            "value": null
+          },
+          {
+            "fact": "synthetic_media_generation",
+            "op": "truthy",
+            "value": null
+          },
+          {
+            "fact": "public_interest_publication",
+            "op": "truthy",
+            "value": null
+          },
+          {
+            "fact": "places_ai_on_eu_market",
+            "op": "truthy",
+            "value": null
+          }
+        ],
+        "combinator": "any_of"
+      },
+      "citation": "Regulation (EU) 2024/1689 Art. 50",
+      "content_sha256": "2eca9c1f9220d71b8b5cb64e7f2eb2e476b112086c09d74911fc70a10ac982b9",
+      "effective_date": "2026-08-02",
+      "jurisdiction": "EU",
+      "law_id": "eu_ai_act_art50",
+      "metadata": {
+        "disclaimer": "Encoded for compliance-readiness analysis, not legal advice. Statutory thresholds and obligations are summarized; consult counsel and the controlling text before relying on any output.",
+        "short_name": "EU AI Act Art. 50"
+      },
+      "requirements": [
+        {
+          "applies_when": {
+            "fact": "direct_user_interaction",
+            "op": "truthy",
+            "value": null
+          },
+          "citation": "Art. 50(1)",
+          "controls": [
+            {
+              "control_id": "ctl-ai-interaction-notice",
+              "description": "Disclosure is presented before or at the start of the interaction (chat, voice, or multimodal), not buried after the fact.",
+              "title": "Clear, upfront disclosure that the counterpart is an AI system"
+            },
+            {
+              "control_id": "ctl-ai-interaction-obviousness-review",
+              "description": "",
+              "title": "Documented review of whether AI nature is obvious from context"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [],
+          "description": "Providers shall ensure that AI systems intended to interact directly with natural persons are designed and developed in such a way that the persons concerned are informed that they are interacting with an AI system, unless this is obvious from the circumstances and the context of use.",
+          "id": "req-art50-interaction-disclosure",
+          "title": "Inform natural persons they are interacting with an AI system"
+        },
+        {
+          "applies_when": {
+            "fact": "synthetic_media_generation",
+            "op": "truthy",
+            "value": null
+          },
+          "citation": "Art. 50(2)",
+          "controls": [
+            {
+              "control_id": "ctl-synthetic-content-marking",
+              "description": "Marking is detectable by the provider's own tools and, where used, interoperable provenance formats (e.g. C2PA-style manifests).",
+              "title": "Synthetic output carries machine-readable marking"
+            },
+            {
+              "control_id": "ctl-synthetic-marking-robustness",
+              "description": "",
+              "title": "Marking survives ordinary downstream distribution where technically feasible"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [],
+          "description": "Providers of AI systems generating synthetic audio, image, video or text content shall ensure outputs are marked in a machine-readable format and detectable as artificially generated or manipulated.",
+          "id": "req-art50-synthetic-marking",
+          "title": "Mark synthetic audio, image, video, and text in machine-readable form"
+        },
+        {
+          "applies_when": {
+            "fact": "public_interest_publication",
+            "op": "truthy",
+            "value": null
+          },
+          "citation": "Art. 50(4)",
+          "controls": [
+            {
+              "control_id": "ctl-public-interest-ai-label",
+              "description": "",
+              "title": "Visible label that content is AI-generated or manipulated"
+            },
+            {
+              "control_id": "ctl-public-interest-human-review",
+              "description": "Process evidence that a competent reviewer approved the disclosure treatment before the content was published on a public-interest matter.",
+              "title": "Human review completed before publication where required"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [],
+          "description": "Deployers of AI systems that generate or manipulate image, audio or video content constituting a deep fake, and deployers that generate or manipulate text published to inform the public on matters of public interest, shall disclose that the content has been artificially generated or manipulated, subject to the Act's limited exceptions and human-review pathways.",
+          "id": "req-art50-public-interest-label",
+          "title": "Label AI-generated public-interest text and deep fakes"
+        }
+      ],
+      "title": "EU AI Act Article 50 Transparency Obligations",
+      "version": "1.0.0"
+    },
+    "il_hb3773": {
+      "applicability": {
+        "children": [
+          {
+            "fact": "employer_in_il",
+            "op": "truthy",
+            "value": null
+          },
+          {
+            "fact": "uses_ai_in_employment_decisions",
+            "op": "truthy",
+            "value": null
+          }
+        ],
+        "combinator": "all_of"
+      },
+      "citation": "775 ILCS 5/2-102(L) (HB 3773, 2024)",
+      "content_sha256": "0c0aa94e2de3b59971e729b62100b7ac984478caf293eefaf332cc9a96d0a9a5",
+      "effective_date": "2026-01-01",
+      "jurisdiction": "US-IL",
+      "law_id": "il_hb3773",
+      "metadata": {
+        "disclaimer": "Encoded for compliance-readiness analysis, not legal advice.",
+        "short_name": "Illinois HB 3773"
+      },
+      "requirements": [
+        {
+          "applies_when": null,
+          "citation": "775 ILCS 5/2-102(L)(1)",
+          "controls": [
+            {
+              "control_id": "ctl-adverse-impact-analysis",
+              "description": "",
+              "title": "Adverse impact analysis across protected classes"
+            },
+            {
+              "control_id": "ctl-impact-remediation",
+              "description": "",
+              "title": "Documented remediation where disparate impact is found"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [],
+          "description": "Using AI with the effect of subjecting employees to discrimination on the basis of a protected class is a civil rights violation. Effect, not intent, is the standard.",
+          "id": "req-no-discriminatory-effect",
+          "title": "Do not use AI that discriminates on a protected class"
+        },
+        {
+          "applies_when": null,
+          "citation": "775 ILCS 5/2-102(L)(2)",
+          "controls": [
+            {
+              "control_id": "ctl-proxy-variable-audit",
+              "description": "",
+              "title": "Feature audit identifying protected-class proxies"
+            },
+            {
+              "control_id": "ctl-zipcode-exclusion",
+              "description": "",
+              "title": "Zip code and close correlates excluded from decision features"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [],
+          "description": "Using zip code as a proxy for a protected class is a separate violation. Proxy variables correlated with protected class carry the same exposure.",
+          "id": "req-no-zip-code-proxy",
+          "title": "Do not use zip code as a proxy for a protected class"
+        },
+        {
+          "applies_when": null,
+          "citation": "775 ILCS 5/2-102(L); Ill. Admin. Code implementing rules",
+          "controls": [
+            {
+              "control_id": "ctl-ai-use-notice",
+              "description": "",
+              "title": "Notice provided to applicants and employees"
+            },
+            {
+              "control_id": "ctl-notice-timing",
+              "description": "",
+              "title": "Notice delivered before or at the time of AI use"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [],
+          "description": "Employers must provide notice when AI is used for recruitment, hiring, promotion, discipline, discharge, or other terms, privileges, or conditions of employment.",
+          "id": "req-employee-notice",
+          "title": "Notify employees and applicants of AI use"
+        },
+        {
+          "applies_when": null,
+          "citation": "775 ILCS 5/2-101 et seq.",
+          "controls": [
+            {
+              "control_id": "ctl-decision-logs",
+              "description": "",
+              "title": "Records of AI-assisted employment decisions retained"
+            },
+            {
+              "control_id": "ctl-vendor-documentation",
+              "description": "",
+              "title": "Vendor documentation on model design and validation retained"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [
+            "req-no-discriminatory-effect"
+          ],
+          "description": "",
+          "id": "req-recordkeeping",
+          "title": "Retain records supporting non-discriminatory use"
+        }
+      ],
+      "title": "Illinois Human Rights Act - Artificial Intelligence in Employment",
+      "version": "1.0.0"
+    },
+    "nyc_ll144": {
+      "applicability": {
+        "children": [
+          {
+            "fact": "uses_aedt",
+            "op": "truthy",
+            "value": null
+          },
+          {
+            "fact": "nyc_employment_decisions",
+            "op": "truthy",
+            "value": null
+          }
+        ],
+        "combinator": "all_of"
+      },
+      "citation": "N.Y.C. Admin. Code sec. 20-870 et seq. (Local Law 144 of 2021)",
+      "content_sha256": "4fb7981232505ffaf3085859744ce468c5b4c383a5b34ff810fd200d2a48866d",
+      "effective_date": "2023-07-05",
+      "jurisdiction": "US-NY-NYC",
+      "law_id": "nyc_ll144",
+      "metadata": {
+        "disclaimer": "Encoded for compliance-readiness analysis, not legal advice.",
+        "short_name": "NYC Local Law 144"
+      },
+      "requirements": [
+        {
+          "applies_when": null,
+          "citation": "N.Y.C. Admin. Code sec. 20-871(a)",
+          "controls": [
+            {
+              "control_id": "ctl-independent-auditor",
+              "description": "",
+              "title": "Audit performed by an auditor independent of the employer and vendor"
+            },
+            {
+              "control_id": "ctl-impact-ratios",
+              "description": "",
+              "title": "Selection rates and impact ratios calculated per required categories"
+            },
+            {
+              "control_id": "ctl-audit-currency",
+              "description": "",
+              "title": "Audit dated within the last 12 months"
+            }
+          ],
+          "deadline_days": 365,
+          "depends_on": [],
+          "description": "The tool must have been the subject of a bias audit conducted by an independent auditor no more than one year before use, calculating selection or scoring rates and impact ratios by sex and by race/ethnicity category, and by intersectional category.",
+          "id": "req-bias-audit",
+          "title": "Obtain an independent bias audit within the prior year"
+        },
+        {
+          "applies_when": null,
+          "citation": "N.Y.C. Admin. Code sec. 20-871(b)",
+          "controls": [
+            {
+              "control_id": "ctl-public-summary-posted",
+              "description": "",
+              "title": "Summary of results posted publicly and reachable"
+            },
+            {
+              "control_id": "ctl-summary-completeness",
+              "description": "",
+              "title": "Summary includes audit date, data source, and distribution date"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [
+            "req-bias-audit"
+          ],
+          "description": "A summary of results, including the date of the most recent audit, the source and explanation of the data, the number of individuals in unknown categories, and the distribution date of the tool, must be posted publicly on the employment section of the website.",
+          "id": "req-publish-audit-summary",
+          "title": "Publish the bias audit summary of results"
+        },
+        {
+          "applies_when": null,
+          "citation": "N.Y.C. Admin. Code sec. 20-871(b)(1)",
+          "controls": [
+            {
+              "control_id": "ctl-ten-day-notice",
+              "description": "",
+              "title": "Notice delivered at least ten business days before use"
+            },
+            {
+              "control_id": "ctl-qualifications-disclosed",
+              "description": "",
+              "title": "Job qualifications and characteristics assessed are disclosed"
+            },
+            {
+              "control_id": "ctl-alternative-process",
+              "description": "",
+              "title": "Instructions to request an alternative process or accommodation"
+            }
+          ],
+          "deadline_days": 10,
+          "depends_on": [],
+          "description": "Candidates and employees who reside in New York City must be notified at least ten business days before the tool is used, told which job qualifications and characteristics it will assess, and told how to request an alternative selection process or accommodation.",
+          "id": "req-candidate-notice",
+          "title": "Notify candidates at least ten business days in advance"
+        },
+        {
+          "applies_when": null,
+          "citation": "N.Y.C. Admin. Code sec. 20-871(b)(3)",
+          "controls": [
+            {
+              "control_id": "ctl-retention-policy-published",
+              "description": "",
+              "title": "Data type, source, and retention policy available or supplied on request"
+            }
+          ],
+          "deadline_days": 30,
+          "depends_on": [],
+          "description": "The employer must disclose, on the website or within 30 days of a written request, the type of data collected by the tool, its source, and the employer's data retention policy.",
+          "id": "req-data-retention-disclosure",
+          "title": "Disclose data retention policy on request"
+        }
+      ],
+      "title": "New York City Automated Employment Decision Tools Law",
+      "version": "1.0.0"
+    },
+    "sb942": {
+      "applicability": {
+        "children": [
+          {
+            "fact": "provides_generative_ai_system",
+            "op": "truthy",
+            "value": null
+          },
+          {
+            "fact": "publicly_accessible_in_ca",
+            "op": "truthy",
+            "value": null
+          },
+          {
+            "fact": "monthly_visitors",
+            "op": "gte",
+            "value": 1000000
+          }
+        ],
+        "combinator": "all_of"
+      },
+      "citation": "Cal. Bus. & Prof. Code div. 8, ch. 22 (SB 942, 2024)",
+      "content_sha256": "d15e33586647c9159a4913bd03a08156a0e31f3890ff4364c4112cf8635a4c27",
+      "effective_date": "2026-08-02",
+      "jurisdiction": "US-CA",
+      "law_id": "sb942",
+      "metadata": {
+        "disclaimer": "Encoded for compliance-readiness analysis, not legal advice. Statutory thresholds and obligations are summarized; consult counsel and the controlling text before relying on any output.",
+        "short_name": "SB 942"
+      },
+      "requirements": [
+        {
+          "applies_when": null,
+          "citation": "Bus. & Prof. Code sec. 22757.3(b)",
+          "controls": [
+            {
+              "control_id": "ctl-provenance-metadata",
+              "description": "Every output path writes the required latent fields. Coverage across modalities matters: an image pipeline that embeds and a text pipeline that does not leaves the requirement unmet.",
+              "title": "Provenance metadata embedded in all generated output"
+            },
+            {
+              "control_id": "ctl-latent-durability",
+              "description": "Evidence that the disclosure survives routine re-encoding, resizing, or format conversion to the extent technically feasible.",
+              "title": "Latent disclosure resists ordinary transformation"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [],
+          "description": "Content produced by the covered provider's system must carry a latent disclosure conveying the provider name, system name and version, the time and date of creation, and a unique identifier \u2014 detectable by the provider's own detection tool and, to the extent technically feasible, permanent or difficult to remove.",
+          "id": "req-latent-disclosure",
+          "title": "Embed a latent disclosure in generated content"
+        },
+        {
+          "applies_when": null,
+          "citation": "Bus. & Prof. Code sec. 22757.3(a)",
+          "controls": [
+            {
+              "control_id": "ctl-manifest-option",
+              "description": "",
+              "title": "User-facing option to apply a visible AI disclosure"
+            },
+            {
+              "control_id": "ctl-manifest-clarity",
+              "description": "Placement and persistence reviewed per output medium rather than asserted globally.",
+              "title": "Disclosure is conspicuous and permanent where technically feasible"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [],
+          "description": "The provider must make available a free, user-electable manifest disclosure that is clear, conspicuous, appropriate for the medium, and understandable to a reasonable person \u2014 identifying the content as AI-generated.",
+          "id": "req-manifest-disclosure",
+          "title": "Offer a manifest disclosure the user can elect"
+        },
+        {
+          "applies_when": null,
+          "citation": "Bus. & Prof. Code sec. 22757.3(c)",
+          "controls": [
+            {
+              "control_id": "ctl-detection-tool-public",
+              "description": "",
+              "title": "Detection tool is publicly reachable and free of charge"
+            },
+            {
+              "control_id": "ctl-detection-tool-accuracy",
+              "description": "",
+              "title": "Tool reports system provenance data for matched content"
+            },
+            {
+              "control_id": "ctl-detection-tool-privacy",
+              "description": "",
+              "title": "Tool does not retain personal provenance data beyond necessity"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [],
+          "description": "The provider must make available a publicly accessible detection tool, at no cost, that lets a user assess whether content was created by the provider's system and returns any available system provenance metadata \u2014 without collecting personal provenance data beyond what is necessary.",
+          "id": "req-detection-tool",
+          "title": "Publish a free public AI detection tool"
+        },
+        {
+          "applies_when": null,
+          "citation": "Bus. & Prof. Code sec. 22757.4",
+          "controls": [
+            {
+              "control_id": "ctl-license-terms",
+              "description": "",
+              "title": "License agreements require the latent disclosure be retained"
+            },
+            {
+              "control_id": "ctl-revocation-process",
+              "description": "A written, exercisable procedure with an owner and a monitored trigger \u2014 not merely a contractual right held in reserve.",
+              "title": "Documented process to revoke a non-conforming license within 96 hours"
+            }
+          ],
+          "deadline_days": 4,
+          "depends_on": [
+            "req-latent-disclosure"
+          ],
+          "description": "Where a covered provider licenses its system to a third party, the license must require the latent disclosure to be maintained. On knowledge that a licensee has removed it, the provider must revoke the license within 96 hours, and the licensee must cease use on revocation.",
+          "id": "req-license-revocation",
+          "title": "Revoke licenses from third parties that strip the latent disclosure"
+        }
+      ],
+      "title": "California AI Transparency Act",
+      "version": "1.0.0"
+    },
+    "tx_hb149": {
+      "applicability": {
+        "children": [
+          {
+            "fact": "develops_or_deploys_ai",
+            "op": "truthy",
+            "value": null
+          },
+          {
+            "children": [
+              {
+                "fact": "operates_in_tx",
+                "op": "truthy",
+                "value": null
+              },
+              {
+                "fact": "markets_to_tx_residents",
+                "op": "truthy",
+                "value": null
+              }
+            ],
+            "combinator": "any_of"
+          }
+        ],
+        "combinator": "all_of"
+      },
+      "citation": "Tex. Bus. & Com. Code ch. 552 (HB 149, 2025)",
+      "content_sha256": "929fe763e984ff19eed4afd558729c67b2cd2c27c6cf4c0e5738c36075839fcc",
+      "effective_date": "2026-01-01",
+      "jurisdiction": "US-TX",
+      "law_id": "tx_hb149",
+      "metadata": {
+        "disclaimer": "Encoded for compliance-readiness analysis, not legal advice.",
+        "short_name": "Texas TRAIGA"
+      },
+      "requirements": [
+        {
+          "applies_when": null,
+          "citation": "Tex. Bus. & Com. Code sec. 552.051-.054",
+          "controls": [
+            {
+              "control_id": "ctl-intent-review",
+              "description": "",
+              "title": "Documented review of system purpose against prohibited intents"
+            },
+            {
+              "control_id": "ctl-safety-guardrails",
+              "description": "",
+              "title": "Guardrails against incitement, self-harm, and criminal facilitation"
+            },
+            {
+              "control_id": "ctl-discrimination-controls",
+              "description": "",
+              "title": "Controls against unlawful discrimination in system design"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [],
+          "description": "Prohibits developing or deploying an AI system with intent to incite self-harm, harm to others, or criminal activity; to infringe constitutional rights; or to unlawfully discriminate against a protected class. Disparate impact alone is not sufficient to show intent.",
+          "id": "req-no-prohibited-intent",
+          "title": "Do not develop or deploy AI with prohibited intent"
+        },
+        {
+          "applies_when": null,
+          "citation": "Tex. Bus. & Com. Code sec. 552.054",
+          "controls": [
+            {
+              "control_id": "ctl-csam-prevention",
+              "description": "",
+              "title": "Technical controls preventing generation of unlawful sexual content"
+            },
+            {
+              "control_id": "ctl-content-monitoring",
+              "description": "",
+              "title": "Monitoring and reporting process for prohibited content attempts"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [],
+          "description": "AI systems may not be developed or distributed with the sole intent of producing child pornography, deep fake sexual material, or explicit content involving minors.",
+          "id": "req-no-unlawful-sexual-content",
+          "title": "Prohibit unlawful sexual content and CSAM generation"
+        },
+        {
+          "applies_when": {
+            "fact": "government_agency",
+            "op": "truthy",
+            "value": null
+          },
+          "citation": "Tex. Bus. & Com. Code sec. 552.051",
+          "controls": [
+            {
+              "control_id": "ctl-agency-ai-disclosure",
+              "description": "",
+              "title": "Plain-language AI disclosure before or at time of interaction"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [],
+          "description": "A state agency using an AI system to interact with consumers must disclose that fact clearly and conspicuously before or at the time of interaction, in plain language, regardless of whether it is obvious.",
+          "id": "req-government-disclosure",
+          "title": "Disclose AI interaction in government services"
+        },
+        {
+          "applies_when": {
+            "fact": "government_agency",
+            "op": "truthy",
+            "value": null
+          },
+          "citation": "Tex. Bus. & Com. Code sec. 552.052",
+          "controls": [
+            {
+              "control_id": "ctl-biometric-consent-record",
+              "description": "",
+              "title": "Consent obtained and recorded before biometric identification"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [
+            "req-government-disclosure"
+          ],
+          "description": "Government entities may not use AI to uniquely identify individuals via biometric data captured without consent where doing so would infringe rights under state or federal law.",
+          "id": "req-biometric-consent",
+          "title": "Obtain consent before biometric identification"
+        },
+        {
+          "applies_when": null,
+          "citation": "Tex. Bus. & Com. Code sec. 552.101-.102",
+          "controls": [
+            {
+              "control_id": "ctl-violation-intake",
+              "description": "",
+              "title": "Process to receive and triage an AG notice within the cure window"
+            },
+            {
+              "control_id": "ctl-cure-documentation",
+              "description": "",
+              "title": "Ability to document a completed cure and remediation plan"
+            }
+          ],
+          "deadline_days": 60,
+          "depends_on": [],
+          "description": "The Attorney General must give written notice and a 60-day opportunity to cure before bringing an action. Readiness to detect, document, and cure within that window materially changes exposure.",
+          "id": "req-cure-period-readiness",
+          "title": "Maintain the ability to cure a noticed violation within 60 days"
+        }
+      ],
+      "title": "Texas Responsible Artificial Intelligence Governance Act",
+      "version": "1.0.0"
+    },
+    "ut_sb149": {
+      "applicability": {
+        "children": [
+          {
+            "fact": "uses_generative_ai_with_consumers",
+            "op": "truthy",
+            "value": null
+          },
+          {
+            "fact": "operates_in_ut",
+            "op": "truthy",
+            "value": null
+          }
+        ],
+        "combinator": "all_of"
+      },
+      "citation": "Utah Code sec. 13-2-12, 13-72-101 et seq. (SB 149, 2024; am. SB 226/SB 332, 2025)",
+      "content_sha256": "73b28583d27e5c7fb85d4b6edc577e661df2ad716f35ad8508e512555be7cec8",
+      "effective_date": "2024-05-01",
+      "jurisdiction": "US-UT",
+      "law_id": "ut_sb149",
+      "metadata": {
+        "disclaimer": "Encoded for compliance-readiness analysis, not legal advice.",
+        "short_name": "Utah AI Policy Act"
+      },
+      "requirements": [
+        {
+          "applies_when": null,
+          "citation": "Utah Code sec. 13-72-101",
+          "controls": [
+            {
+              "control_id": "ctl-ondemand-disclosure",
+              "description": "",
+              "title": "System responds truthfully when asked whether it is AI"
+            },
+            {
+              "control_id": "ctl-disclosure-clarity",
+              "description": "",
+              "title": "Disclosure is clear, conspicuous, and not buried in terms"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [],
+          "description": "A person who uses generative AI to interact with an individual in connection with a consumer transaction must clearly and conspicuously disclose, if asked or prompted by the individual, that the interaction is with generative AI and not a human.",
+          "id": "req-disclosure-on-request",
+          "title": "Disclose generative AI use when asked"
+        },
+        {
+          "applies_when": {
+            "fact": "regulated_occupation",
+            "op": "truthy",
+            "value": null
+          },
+          "citation": "Utah Code sec. 13-72-102",
+          "controls": [
+            {
+              "control_id": "ctl-upfront-oral-disclosure",
+              "description": "",
+              "title": "Disclosure made at the start of any oral or spoken exchange"
+            },
+            {
+              "control_id": "ctl-upfront-written-disclosure",
+              "description": "",
+              "title": "Disclosure made before any written or electronic exchange"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [],
+          "description": "A regulated occupation using generative AI to provide services must prominently disclose the AI interaction at the start of an oral exchange and before a written exchange \u2014 without waiting to be asked.",
+          "id": "req-regulated-occupation-disclosure",
+          "title": "Disclose proactively in regulated occupations"
+        },
+        {
+          "applies_when": null,
+          "citation": "Utah Code sec. 13-2-12",
+          "controls": [
+            {
+              "control_id": "ctl-output-governance",
+              "description": "",
+              "title": "Controls on AI output accuracy in consumer-facing use"
+            },
+            {
+              "control_id": "ctl-consumer-complaint-path",
+              "description": "",
+              "title": "Path to review and correct AI statements to consumers"
+            }
+          ],
+          "deadline_days": null,
+          "depends_on": [
+            "req-disclosure-on-request"
+          ],
+          "description": "Generative AI making a statement in violation of consumer protection law is not a defense. The deploying person is answerable for the output as if it were their own.",
+          "id": "req-no-ai-defense",
+          "title": "Remain accountable for statements made by generative AI"
+        }
+      ],
+      "title": "Utah Artificial Intelligence Policy Act",
+      "version": "1.0.0"
+    }
+  }
+}
