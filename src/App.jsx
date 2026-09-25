@@ -3,7 +3,16 @@ import { useMemo, useState } from "react";
 const PIN = "ead75ac1e016";
 const HOST = "prestigesf-the-engine";
 const LIVE_HASH = "9999656c896009545a9c778b72191907f0f71d221f3dbcec1f000547c5e63681";
-const EXECUTED = ["PACK-11-DGCL-GOV", "PACK-01-HIPAA-HITECH", "PACK-02-NACHA-REGE"];
+const EXECUTED = [
+  "PACK-11-DGCL-GOV",
+  "PACK-01-HIPAA-HITECH",
+  "PACK-02-NACHA-REGE",
+  "PQC-FIPS204",
+  "FRONTIER-TC37-46",
+  "QBOM-CBOM-16",
+  "SBOM-CISA-2026",
+  "SBOM-QBOM",
+];
 const MAPPED = [
   "California AB 2013",
   "California SB 942",
@@ -22,6 +31,10 @@ const PACKS = [
   { id: "PACK-01-HIPAA-HITECH", name: "HIPAA / HITECH", file: "PACK-01-HIPAA-HITECH.json", sections: ["164.308", "164.312", "164.316", "13402"], delta: 0 },
   { id: "AB2013", name: "California AB 2013", file: "AB2013.json", sections: ["Civ. Code 3110", "training-data", "public CA"], delta: 0 },
   { id: "PQC-FIPS204", name: "NIST PQC — FIPS 203/204", file: "PQC-FIPS204.json", sections: ["ML-KEM", "ML-DSA-65", "EO 14412"], delta: 0 },
+  { id: "FRONTIER-TC37-46", name: "Adversarial Frontier TC-37..TC-46", file: "FRONTIER-TC37-46.json", sections: ["TC-37", "TC-46", "c7f4b91c"], delta: 0 },
+  { id: "QBOM-CBOM-16", name: "QBOM / CycloneDX 1.6 CBOM", file: "QBOM-CBOM-16.json", sections: ["cryptographic-asset", "nistQuantumSecurityLevel", "ML-KEM / ML-DSA"], delta: 0 },
+  { id: "SBOM-CISA-2026", name: "SBOM — CISA 2026 Minimum Elements", file: "SBOM-CISA-2026.json", sections: ["Component Producer", "Component Hash", "SBOM Tool Name"], delta: 0 },
+  { id: "SBOM-QBOM", name: "SBOM + QBOM joint release", file: "SBOM-QBOM.json", sections: ["same release", "crypto-to-component", "no secrets"], delta: 0 },
 ];
 
 function shortId() {
@@ -82,7 +95,7 @@ export default function App() {
           <span>DRIFT NONE</span>
           <span>V2 BENCH</span>
           <span>11 ENGINES</span>
-          <span>14 PACKS</span>
+          <span>17 PACKS</span>
         </div>
       </header>
       <button className="rain-btn" type="button" onClick={() => setRain((v) => !v)}>
@@ -102,8 +115,8 @@ export default function App() {
         <p className="hint">Intercept sends {pack.id.split("-").slice(0, 2).join("-")} through the pinned Prestige Engine. GoldTrac leaf replay is DEMO FIXTURE.</p>
         <p className="kicker" style={{ marginTop: 22 }}>Inventory</p>
         <p className="stat">11 registered engines</p>
-        <p className="stat">14 active compliance/control packs</p>
-        <p className="muted">3 newly executed through Prestige Engine · 11 pre-existing mapped packs</p>
+        <p className="stat">17 active compliance/control packs</p>
+        <p className="muted">8 newly executed through Prestige Engine · 11 pre-existing mapped packs</p>
         <p className="kicker" style={{ marginTop: 16 }}>Newly executed through Prestige Engine</p>
         {EXECUTED.map((id) => <p key={id} className="stat">{id}</p>)}
         <p className="kicker" style={{ marginTop: 16 }}>Pre-existing mapped packs</p>
