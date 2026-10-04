@@ -1,0 +1,345 @@
+{
+ "generated_at": "2026-10-04T13:46:21.824Z",
+ "engine": "src/engine/engine.mjs (deadlinesf blob 64adde4)",
+ "packs_commit": "ad10d68",
+ "bundle_sha256": "3f889228dfb671040e9c3c53e5b2c54732da38a8a9bd0ae0d6df13b18693d7e9",
+ "pack_count": 15,
+ "facts_used": {
+  "ships_or_operates_software": true,
+  "implements_cryptography": true,
+  "consumes_cryptographic_libraries": true,
+  "terminates_tls_or_issues_certificates": true,
+  "claims_pqc_or_quantum_safe": true,
+  "claims_supply_chain_transparency": true,
+  "sells_to_us_federal_government": false,
+  "contract_requires_sbom": true,
+  "in_scope_eu_cyber_resilience_act": false,
+  "system_tier_high_value_asset": false,
+  "system_tier_federal_covered": false,
+  "federal_covered_system": false,
+  "develops_generative_ai_system": true,
+  "provides_generative_ai_system": true,
+  "publicly_accessible_in_ca": true,
+  "genai_released_on_or_after_2022_01_01": true,
+  "sole_purpose_security_aircraft_or_defense": false
+ },
+ "controls_submitted": 0,
+ "outcomes": {
+  "HUMAN_REVIEW": 14,
+  "ALLOW": 1
+ },
+ "applicability": {
+  "APPLIES": 4,
+  "INDETERMINATE": 10,
+  "DOES_NOT_APPLY": 1
+ },
+ "rows": [
+  {
+   "law_id": "ab2013",
+   "title": "California Generative AI Training Data Transparency Act",
+   "jurisdiction": "US-CA",
+   "version": "1.0.0",
+   "requirements": 5,
+   "controls": 15,
+   "applicability": "APPLIES",
+   "outcome": "HUMAN_REVIEW",
+   "confidence": "LOW",
+   "escalation": "INSUFFICIENT_EVIDENCE",
+   "missing": [],
+   "reasons": [
+    "REQUIREMENT_STATUS_UNKNOWN: req-training-data-documentation: no evidence submitted for: ctl-documentation-published, ctl-documentation-per-system",
+    "REQUIREMENT_STATUS_UNKNOWN: req-dataset-sources: no evidence submitted for: ctl-dataset-sources-owners, ctl-dataset-licensing, ctl-collection-period, ctl-first-use-dates",
+    "REQUIREMENT_STATUS_UNKNOWN: req-dataset-composition: no evidence submitted for: ctl-datapoint-count, ctl-ip-protected-content, ctl-personal-information, ctl-aggregate-consumer-information",
+    "REQUIREMENT_STATUS_UNKNOWN: req-dataset-processing: no evidence submitted for: ctl-purpose-description, ctl-cleaning-and-processing, ctl-synthetic-data",
+    "REQUIREMENT_STATUS_UNKNOWN: req-update-on-substantial-modification: no evidence submitted for: ctl-modification-trigger, ctl-documentation-versioning"
+   ]
+  },
+  {
+   "law_id": "cisa-sbom-2026",
+   "title": "Software Bill of Materials (CISA 2026 Minimum Elements)",
+   "jurisdiction": "US-FED-GUIDANCE",
+   "version": "1.0.0",
+   "requirements": 5,
+   "controls": 11,
+   "applicability": "APPLIES",
+   "outcome": "HUMAN_REVIEW",
+   "confidence": "LOW",
+   "escalation": "INSUFFICIENT_EVIDENCE",
+   "missing": [],
+   "reasons": [
+    "REQUIREMENT_STATUS_UNKNOWN: req-sbom-exists: no evidence submitted for: ctl-sbom-document, ctl-sbom-per-release",
+    "REQUIREMENT_STATUS_UNKNOWN: req-sbom-minimum-fields: no evidence submitted for: ctl-producer-name-version, ctl-identifiers-and-hash, ctl-license-and-deps, ctl-author-tool-context",
+    "REQUIREMENT_STATUS_UNKNOWN: req-sbom-automation: no evidence submitted for: ctl-sbom-tool-named, ctl-sbom-in-release-pipeline",
+    "REQUIREMENT_STATUS_UNKNOWN: req-sbom-share: no evidence submitted for: ctl-sbom-delivery-path, ctl-sbom-no-secret-leak",
+    "REQUIREMENT_STATUS_UNKNOWN: req-sbom-refresh: no evidence submitted for: ctl-sbom-matches-build"
+   ]
+  },
+  {
+   "law_id": "co_sb24_205",
+   "title": "Colorado Artificial Intelligence Act",
+   "jurisdiction": "US-CO",
+   "version": "1.0.0",
+   "requirements": 7,
+   "controls": 15,
+   "applicability": "INDETERMINATE",
+   "outcome": "HUMAN_REVIEW",
+   "confidence": "LOW",
+   "escalation": "APPLICABILITY_UNRESOLVED",
+   "missing": [
+    "does_business_in_co",
+    "high_risk_ai_system",
+    "role"
+   ],
+   "reasons": [
+    "APPLICABILITY_UNRESOLVED: Cannot establish whether this law reaches the organization.",
+    "MISSING_FACTS: missing facts: does_business_in_co, high_risk_ai_system, role"
+   ]
+  },
+  {
+   "law_id": "cyclonedx-cbom-1.6",
+   "title": "Cryptographic Bill of Materials (CycloneDX 1.6 CBOM)",
+   "jurisdiction": "INDUSTRY-STANDARD",
+   "version": "1.0.0",
+   "requirements": 5,
+   "controls": 10,
+   "applicability": "APPLIES",
+   "outcome": "HUMAN_REVIEW",
+   "confidence": "LOW",
+   "escalation": "INSUFFICIENT_EVIDENCE",
+   "missing": [],
+   "reasons": [
+    "REQUIREMENT_STATUS_UNKNOWN: req-cbom-exists: no evidence submitted for: ctl-cbom-document, ctl-cbom-per-system",
+    "REQUIREMENT_STATUS_UNKNOWN: req-cbom-asset-types: no evidence submitted for: ctl-algorithms-listed, ctl-protocols-listed, ctl-certs-and-material",
+    "REQUIREMENT_STATUS_UNKNOWN: req-cbom-quantum-levels: no evidence submitted for: ctl-nist-qsl-present, ctl-no-false-pqc",
+    "REQUIREMENT_STATUS_UNKNOWN: req-cbom-dependencies: no evidence submitted for: ctl-uses-or-provides",
+    "REQUIREMENT_STATUS_UNKNOWN: req-cbom-refresh: no evidence submitted for: ctl-cbom-timestamp, ctl-cbom-trigger"
+   ]
+  },
+  {
+   "law_id": "cyclonedx-cbom-sbom",
+   "title": "Software and Cryptographic Bills of Materials (SBOM + CBOM)",
+   "jurisdiction": "INDUSTRY-STANDARD",
+   "version": "1.0.0",
+   "requirements": 6,
+   "controls": 12,
+   "applicability": "APPLIES",
+   "outcome": "HUMAN_REVIEW",
+   "confidence": "LOW",
+   "escalation": "INSUFFICIENT_EVIDENCE",
+   "missing": [],
+   "reasons": [
+    "REQUIREMENT_STATUS_UNKNOWN: req-both-boms-exist: no evidence submitted for: ctl-sbom-present, ctl-cbom-present, ctl-same-release-scope",
+    "REQUIREMENT_STATUS_UNKNOWN: req-sbom-minimum-fields: no evidence submitted for: ctl-sbom-fields, ctl-sbom-automated",
+    "REQUIREMENT_STATUS_UNKNOWN: req-cbom-assets-and-levels: no evidence submitted for: ctl-cbom-asset-types, ctl-nist-qsl, ctl-no-false-pqc",
+    "REQUIREMENT_STATUS_UNKNOWN: req-crosswalk: no evidence submitted for: ctl-crypto-to-component",
+    "REQUIREMENT_STATUS_UNKNOWN: req-no-secret-material: no evidence submitted for: ctl-no-key-material",
+    "REQUIREMENT_STATUS_UNKNOWN: req-joint-refresh: no evidence submitted for: ctl-paired-timestamp, ctl-named-owner"
+   ]
+  },
+  {
+   "law_id": "deployment_controls",
+   "title": "Operational Deployment, Compute Threshold, and Sovereign Compute Controls",
+   "jurisdiction": "MULTI",
+   "version": "1.0.0",
+   "requirements": 4,
+   "controls": 9,
+   "applicability": "INDETERMINATE",
+   "outcome": "HUMAN_REVIEW",
+   "confidence": "LOW",
+   "escalation": "APPLICABILITY_UNRESOLVED",
+   "missing": [
+    "high_impact_autonomous_deployment",
+    "training_flops_above_1e26",
+    "cross_border_personal_data_transfer",
+    "government_or_defense_workload"
+   ],
+   "reasons": [
+    "APPLICABILITY_UNRESOLVED: Cannot establish whether this law reaches the organization.",
+    "MISSING_FACTS: missing facts: cross_border_personal_data_transfer, government_or_defense_workload, high_impact_autonomous_deployment, training_flops_above_1e26"
+   ]
+  },
+  {
+   "law_id": "eo_14412",
+   "title": "Securing the Nation Against Advanced Cryptographic Attacks",
+   "jurisdiction": "US_FEDERAL",
+   "version": "2026.06",
+   "requirements": 2,
+   "controls": 2,
+   "applicability": "DOES_NOT_APPLY",
+   "outcome": "ALLOW",
+   "confidence": "HIGH",
+   "escalation": "NONE",
+   "missing": [],
+   "reasons": [
+    "LAW_NOT_APPLICABLE: Applicability conditions are not met for these facts."
+   ]
+  },
+  {
+   "law_id": "eu_ai_act",
+   "title": "EU Artificial Intelligence Act",
+   "jurisdiction": "EU",
+   "version": "1.0.0",
+   "requirements": 10,
+   "controls": 24,
+   "applicability": "INDETERMINATE",
+   "outcome": "HUMAN_REVIEW",
+   "confidence": "LOW",
+   "escalation": "APPLICABILITY_UNRESOLVED",
+   "missing": [
+    "places_ai_on_eu_market",
+    "risk_tier"
+   ],
+   "reasons": [
+    "APPLICABILITY_UNRESOLVED: Cannot establish whether this law reaches the organization.",
+    "MISSING_FACTS: missing facts: places_ai_on_eu_market, risk_tier"
+   ]
+  },
+  {
+   "law_id": "eu_ai_act_art25",
+   "title": "EU AI Act Article 25 Value-Chain Responsibilities",
+   "jurisdiction": "EU",
+   "version": "1.0.0",
+   "requirements": 4,
+   "controls": 8,
+   "applicability": "INDETERMINATE",
+   "outcome": "HUMAN_REVIEW",
+   "confidence": "LOW",
+   "escalation": "APPLICABILITY_UNRESOLVED",
+   "missing": [
+    "places_ai_on_eu_market",
+    "puts_own_name_on_existing_high_risk_system",
+    "substantially_modifies_high_risk_system",
+    "changes_purpose_so_system_becomes_high_risk",
+    "integrates_third_party_ai_into_high_risk_system",
+    "supplies_ai_component_to_high_risk_system",
+    "is_importer_or_distributor"
+   ],
+   "reasons": [
+    "APPLICABILITY_UNRESOLVED: Cannot establish whether this law reaches the organization.",
+    "MISSING_FACTS: missing facts: changes_purpose_so_system_becomes_high_risk, integrates_third_party_ai_into_high_risk_system, is_importer_or_distributor, places_ai_on_eu_market, puts_own_name_on_existing_high_risk_system, substantially_modifies_high_risk_system, supplies_ai_component_to_high_risk_system"
+   ]
+  },
+  {
+   "law_id": "eu_ai_act_art50",
+   "title": "EU AI Act Article 50 Transparency Obligations",
+   "jurisdiction": "EU",
+   "version": "1.0.0",
+   "requirements": 3,
+   "controls": 6,
+   "applicability": "INDETERMINATE",
+   "outcome": "HUMAN_REVIEW",
+   "confidence": "LOW",
+   "escalation": "APPLICABILITY_UNRESOLVED",
+   "missing": [
+    "direct_user_interaction",
+    "synthetic_media_generation",
+    "public_interest_publication",
+    "places_ai_on_eu_market"
+   ],
+   "reasons": [
+    "APPLICABILITY_UNRESOLVED: Cannot establish whether this law reaches the organization.",
+    "MISSING_FACTS: missing facts: direct_user_interaction, places_ai_on_eu_market, public_interest_publication, synthetic_media_generation"
+   ]
+  },
+  {
+   "law_id": "il_hb3773",
+   "title": "Illinois Human Rights Act - Artificial Intelligence in Employment",
+   "jurisdiction": "US-IL",
+   "version": "1.0.0",
+   "requirements": 4,
+   "controls": 8,
+   "applicability": "INDETERMINATE",
+   "outcome": "HUMAN_REVIEW",
+   "confidence": "LOW",
+   "escalation": "APPLICABILITY_UNRESOLVED",
+   "missing": [
+    "employer_in_il",
+    "uses_ai_in_employment_decisions"
+   ],
+   "reasons": [
+    "APPLICABILITY_UNRESOLVED: Cannot establish whether this law reaches the organization.",
+    "MISSING_FACTS: missing facts: employer_in_il, uses_ai_in_employment_decisions"
+   ]
+  },
+  {
+   "law_id": "nyc_ll144",
+   "title": "New York City Automated Employment Decision Tools Law",
+   "jurisdiction": "US-NY-NYC",
+   "version": "1.0.0",
+   "requirements": 4,
+   "controls": 9,
+   "applicability": "INDETERMINATE",
+   "outcome": "HUMAN_REVIEW",
+   "confidence": "LOW",
+   "escalation": "APPLICABILITY_UNRESOLVED",
+   "missing": [
+    "uses_aedt",
+    "nyc_employment_decisions"
+   ],
+   "reasons": [
+    "APPLICABILITY_UNRESOLVED: Cannot establish whether this law reaches the organization.",
+    "MISSING_FACTS: missing facts: nyc_employment_decisions, uses_aedt"
+   ]
+  },
+  {
+   "law_id": "sb942",
+   "title": "California AI Transparency Act",
+   "jurisdiction": "US-CA",
+   "version": "1.0.0",
+   "requirements": 4,
+   "controls": 9,
+   "applicability": "INDETERMINATE",
+   "outcome": "HUMAN_REVIEW",
+   "confidence": "LOW",
+   "escalation": "APPLICABILITY_UNRESOLVED",
+   "missing": [
+    "monthly_visitors"
+   ],
+   "reasons": [
+    "APPLICABILITY_UNRESOLVED: Cannot establish whether this law reaches the organization.",
+    "MISSING_FACTS: missing facts: monthly_visitors"
+   ]
+  },
+  {
+   "law_id": "tx_hb149",
+   "title": "Texas Responsible Artificial Intelligence Governance Act",
+   "jurisdiction": "US-TX",
+   "version": "1.0.0",
+   "requirements": 5,
+   "controls": 9,
+   "applicability": "INDETERMINATE",
+   "outcome": "HUMAN_REVIEW",
+   "confidence": "LOW",
+   "escalation": "APPLICABILITY_UNRESOLVED",
+   "missing": [
+    "develops_or_deploys_ai",
+    "operates_in_tx",
+    "markets_to_tx_residents"
+   ],
+   "reasons": [
+    "APPLICABILITY_UNRESOLVED: Cannot establish whether this law reaches the organization.",
+    "MISSING_FACTS: missing facts: develops_or_deploys_ai, markets_to_tx_residents, operates_in_tx"
+   ]
+  },
+  {
+   "law_id": "ut_sb149",
+   "title": "Utah Artificial Intelligence Policy Act",
+   "jurisdiction": "US-UT",
+   "version": "1.0.0",
+   "requirements": 3,
+   "controls": 6,
+   "applicability": "INDETERMINATE",
+   "outcome": "HUMAN_REVIEW",
+   "confidence": "LOW",
+   "escalation": "APPLICABILITY_UNRESOLVED",
+   "missing": [
+    "uses_generative_ai_with_consumers",
+    "operates_in_ut"
+   ],
+   "reasons": [
+    "APPLICABILITY_UNRESOLVED: Cannot establish whether this law reaches the organization.",
+    "MISSING_FACTS: missing facts: operates_in_ut, uses_generative_ai_with_consumers"
+   ]
+  }
+ ]
+}
